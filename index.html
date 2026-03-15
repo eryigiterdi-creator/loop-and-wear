@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReLoop MVP – Strasbourg</title>
+  <meta name="theme-color" content="#111111" />
+  <style>
+    :root { --bg:#0b0b0c; --card:#151518; --text:#f3f3f4; --muted:#b7b7be; --line:#2a2a30; --accent:#7dd3fc; --radius:18px; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(1200px 600px at 20% -10%, rgba(125,211,252,.15), transparent 60%),radial-gradient(900px 500px at 100% 0%, rgba(134,239,172,.10), transparent 55%),var(--bg);color:var(--text)}
+    header{position:sticky;top:0;background:rgba(11,11,12,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
+    .wrap{max-width:980px;margin:0 auto;padding:16px}
+    .top{display:flex;gap:12px;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg, rgba(125,211,252,.9), rgba(134,239,172,.9));box-shadow:0 12px 30px rgba(0,0,0,.35)}
+    h1{font-size:18px;margin:0}
+    .sub{font-size:12px;color:var(--muted);margin-top:2px}
+    nav{display:flex;gap:8px;flex-wrap:wrap}
+    .tab{padding:10px 12px;border-radius:999px;border:1px solid var(--line);color:var(--text);background:rgba(21,21,24,.7);cursor:pointer;font-size:13px}
+    .tab.active{border-color:rgba(125,211,252,.6);box-shadow:0 0 0 3px rgba(125,211,252,.12)}
+    main{padding:18px 0 60px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .card{grid-column:span 12;background:rgba(21,21,24,.8);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+    @media(min-width:860px){.span6{grid-column:span 6}.span4{grid-column:span 4}.span8{grid-column:span 8}}
+    .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid var(--line);color:var(--muted);background:rgba(0,0,0,.15)}
+    .tag{padding:2px 8px;border-radius:999px;font-size:12px;border:1px solid var(--line);color:var(--text)}
+    .tag.urgent{border-color:rgba(253,230,138,.6);background:rgba(253,230,138,.08)}
+    .tag.ok{border-color:rgba(134,239,172,.6);background:rgba(134,239,172,.08)}
+    .row{display:flex;gap:10px;align-items:center;justify-content:space-between}
+    .muted{color:var(--muted)}
+    .btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:10px 12px;border-radius:12px;border:1px solid rgba(125,211,252,.35);background:rgba(125,211,252,.12);color:var(--text);cursor:pointer;font-weight:600;font-size:13px;text-decoration:none}
+    .btn.secondary{border-color:var(--line);background:rgba(255,255,255,.03);font-weight:500}
+    .btn.danger{border-color:rgba(252,165,165,.45);background:rgba(252,165,165,.10)}
+    input,select{width:100%;padding:12px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--text);outline:none;font-size:14px}
+    label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
+    .small{font-size:12px;color:var(--muted)}
+    table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px;border:1px solid var(--line)}
+    th,td{padding:10px 10px;border-bottom:1px solid var(--line);font-size:13px;text-align:left}
+    th{color:var(--muted);font-weight:600;background:rgba(255,255,255,.02)}
+    tr:last-child td{border-bottom:none}
+    .notice{border:1px solid rgba(125,211,252,.35);background:rgba(125,211,252,.08);padding:12px 12px;border-radius:14px;color:var(--text)}
+    .flex{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .right{text-align:right}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>ReLoop MVP</h1>
+          <div class="sub">Collecte textile à la demande • Strasbourg • Prototype (sans serveur)</div>
+        </div>
+      </div>
+      <nav aria-label="Navigation">
+        <button class="tab" data-route="home">Accueil</button>
+        <button class="tab" data-route="needs">Besoins</button>
+        <button class="tab" data-route="points">Points</button>
+        <button class="tab" data-route="deposit">Déposer</button>
+        <button class="tab" data-route="rewards">Récompenses</button>
+        <button class="tab" data-route="leaderboard">Classement</button>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="app"></div>
+</main>
+
+<script>
+const DATA_URL = './data.json';
+function todayKey(){ const d=new Date(); return d.toISOString().slice(0,10); }
+function lsGet(key,fallback){ try{ const v=localStorage.getItem(key); if(!v) return fallback; return JSON.parse(v);}catch(e){return fallback;} }
+function lsSet(key,value){ localStorage.setItem(key, JSON.stringify(value)); }
+function getState(){ return { profile: lsGet('reloop_profile',{pseudo:''}), deposits: lsGet('reloop_deposits',[]), pointsByUser: lsGet('reloop_points',{}), lastDepositByUser: lsGet('reloop_last_deposit',{}) }; }
+function saveProfile(p){ lsSet('reloop_profile', p); }
+function saveDeposits(d){ lsSet('reloop_deposits', d); }
+function savePoints(m){ lsSet('reloop_points', m); }
+function saveLastDeposit(m){ lsSet('reloop_last_deposit', m); }
+function esc(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+function setRoute(route, params={}){ const q=new URLSearchParams(params).toString(); location.hash = q ? `#${route}?${q}` : `#${route}`; }
+function parseHash(){ const h=location.hash.replace('#','')||'home'; const [route,query]=h.split('?'); const params=Object.fromEntries(new URLSearchParams(query||'')); return {route,params}; }
+function activeTab(route){ document.querySelectorAll('.tab').forEach(btn=>btn.classList.toggle('active', btn.dataset.route===route)); }
+function badge(priority){ return priority==='Urgent' ? '<span class="tag urgent">Urgent</span>' : '<span class="tag ok">Normal</span>'; }
+async function loadData(){ const res=await fetch(DATA_URL); if(!res.ok) throw new Error('Impossible de charger data.json (utilise un serveur local).'); return await res.json(); }
+function kpiCard(title,value,hint=''){ return `<div class="pill"><strong>${esc(title)} :</strong> <span class="mono">${esc(value)}</span> ${hint?`<span class="muted">(${esc(hint)})</span>`:''}</div>`; }
+
+function renderHome(data){
+  const state=getState();
+  const pseudo=state.profile.pseudo||'';
+  const totalUsers=Object.keys(state.pointsByUser).length;
+  const totalDeposits=state.deposits.length;
+  const totalPoints=pseudo?(state.pointsByUser[pseudo]||0):0;
+  const urgent=data.needs.find(n=>n.priority==='Urgent');
+  const urgentText=urgent?`${urgent.label} (+${urgent.base_points}+${urgent.bonus_points})`:'Aucun besoin urgent';
+  return `
+  <div class="grid">
+    <section class="card span8">
+      <h2 style="margin:0 0 10px;">Bienvenue</h2>
+      <p class="muted" style="margin:0 0 14px;">Ce MVP simule ReLoop : besoins des usines, points de collecte, validation via QR/code, points et classement. (Données locales au navigateur.)</p>
+      <div class="notice">
+        <div class="row">
+          <div><div class="muted" style="font-size:12px;">Besoin prioritaire du moment</div><div style="font-weight:700; margin-top:4px;">${esc(urgentText)}</div></div>
+          <button class="btn" onclick="setRoute('deposit')">Déposer maintenant</button>
+        </div>
+      </div>
+      <div style="margin-top:14px;" class="flex">
+        ${kpiCard('Utilisateurs', totalUsers, 'locaux')}
+        ${kpiCard('Dépôts', totalDeposits, 'validés')}
+        ${kpiCard('Mes points', totalPoints, pseudo?pseudo:'définir pseudo')}
+      </div>
+      <div style="margin-top:16px;" class="grid">
+        <div class="card span6" style="padding:14px;">
+          <h3 style="margin:0 0 6px;">1) Choisir un pseudo</h3>
+          <p class="muted" style="margin:0 0 10px;">Un pseudo suffit pour tester (pas d'email).</p>
+          <div class="flex">
+            <input id="pseudoInput" placeholder="ex: Erdi" value="${esc(pseudo)}" />
+            <button class="btn" onclick="(function(){ const v=document.getElementById('pseudoInput').value.trim(); if(!v) return alert('Entre un pseudo'); saveProfile({pseudo:v}); render(); })()">Enregistrer</button>
+          </div>
+        </div>
+        <div class="card span6" style="padding:14px;">
+          <h3 style="margin:0 0 6px;">2) Déposer via QR code</h3>
+          <p class="muted" style="margin:0 0 10px;">Scanne le QR du point, puis valide en 10 secondes.</p>
+          <div class="flex">
+            <button class="btn secondary" onclick="setRoute('points')">Voir les points</button>
+            <button class="btn secondary" onclick="setRoute('needs')">Voir les besoins</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <aside class="card span4">
+      <h2 style="margin:0 0 10px;">Règles MVP</h2>
+      <p class="muted" style="margin:0 0 10px;">Pour limiter la triche : 1 dépôt max / jour / utilisateur.</p>
+      <p class="muted" style="margin:0 0 14px;">En réel, le poids est validé au ramassage (prestataire / partenaire) et sert au reporting.</p>
+      <button class="btn danger" onclick="(function(){ if(!confirm('Réinitialiser le MVP (effacer données locales) ?')) return; localStorage.clear(); render(); })()">Réinitialiser</button>
+    </aside>
+  </div>`;
+}
+
+function renderNeeds(data){
+  const rows=data.needs.map(n=>`<tr><td><strong>${esc(n.label)}</strong><div class="small">${esc(n.why||'')}</div></td><td>${badge(n.priority)}</td><td class="mono">${n.base_points}</td><td class="mono">${n.bonus_points}</td></tr>`).join('');
+  return `<div class="grid">
+    <section class="card span8">
+      <h2 style="margin:0 0 10px;">Besoins des usines (pilote)</h2>
+      <p class="muted" style="margin:0 0 14px;">Dans le MVP, les besoins sont fixes. En réel, ils seraient saisis par les partenaires B2B.</p>
+      <table><thead><tr><th>Catégorie demandée</th><th>Priorité</th><th>Points</th><th>Bonus</th></tr></thead><tbody>${rows}</tbody></table>
+    </section>
+    <aside class="card span4">
+      <h3 style="margin:0 0 10px;">Conseil collecte</h3>
+      <p class="muted" style="margin:0;">Pour améliorer la qualité, proposer 2 flux : “réutilisable” et “recyclage”.</p>
+    </aside>
+  </div>`;
+}
+
+function renderPoints(data){
+  const cards=data.points.map(p=>`<div class="card span6">
+    <div class="row">
+      <div>
+        <div class="muted" style="font-size:12px;">Point ${esc(p.id)}</div>
+        <div style="font-weight:800; margin-top:4px;">${esc(p.name)}</div>
+        <div class="muted" style="margin-top:4px;">${esc(p.address)}</div>
+      </div>
+      <div class="right"><a class="btn secondary" href="${esc(p.maps)}" target="_blank" rel="noopener">Maps</a></div>
+    </div>
+    <div style="margin-top:12px;" class="flex">
+      <button class="btn" onclick="setRoute('deposit',{point:'${esc(p.id)}'})">Déposer ici</button>
+      <span class="pill">QR : <span class="mono">${esc(p.id)}</span></span>
+    </div>
+  </div>`).join('');
+  return `<div class="grid">
+    <section class="card span12">
+      <h2 style="margin:0 0 10px;">Points de collecte (5)</h2>
+      <p class="muted" style="margin:0 0 10px;">Sur le terrain, chaque point affiche un QR code unique. Dans ce MVP, tu peux cliquer “Déposer ici” ou saisir le code.</p>
+    </section>
+    ${cards}
+  </div>`;
+}
+
+function computeDepositPoints(data, needId){
+  const need=data.needs.find(n=>n.id===needId) || data.needs[0];
+  const base=need.base_points||0;
+  const bonus=(need.priority==='Urgent'?(need.bonus_points||0):0);
+  return {need, points: base+bonus};
+}
+
+function renderDeposit(data, params){
+  const state=getState();
+  const pseudo=state.profile.pseudo||'';
+  const prePoint=params.point||'';
+  const preNeed=params.need||(data.needs[0]?.id||'');
+  const pointOptions=data.points.map(p=>`<option value="${esc(p.id)}" ${p.id===prePoint?'selected':''}>${esc(p.id)} – ${esc(p.name)}</option>`).join('');
+  const needOptions=data.needs.map(n=>`<option value="${esc(n.id)}" ${n.id===preNeed?'selected':''}>${esc(n.label)} (${n.priority})</option>`).join('');
+  return `<div class="grid">
+    <section class="card span8">
+      <h2 style="margin:0 0 10px;">Valider un dépôt</h2>
+      <p class="muted" style="margin:0 0 14px;">En réel, le QR code ouvrirait cet écran avec le point pré-sélectionné.</p>
+      <div class="grid">
+        <div class="card span6" style="padding:14px;">
+          <label>Pseudo</label>
+          <input id="depPseudo" placeholder="ex: Erdi" value="${esc(pseudo)}" />
+          <div class="small" style="margin-top:8px;">Astuce : enregistre ton pseudo sur l'accueil.</div>
+        </div>
+        <div class="card span6" style="padding:14px;">
+          <label>Point de collecte (QR / code)</label>
+          <select id="depPoint">${pointOptions}</select>
+        </div>
+        <div class="card span12" style="padding:14px;">
+          <label>Besoin associé (ce que l'usine recherche)</label>
+          <select id="depNeed">${needOptions}</select>
+          <div class="small" style="margin-top:8px;">Les points varient selon la priorité.</div>
+        </div>
+        <div class="card span12" style="padding:14px;">
+          <div class="row"><div class="small">Règle MVP</div><div class="pill">1 dépôt max / jour / utilisateur</div></div>
+          <div style="margin-top:12px;" class="flex">
+            <button class="btn" onclick="submitDeposit()">Valider le dépôt</button>
+            <button class="btn secondary" onclick="setRoute('leaderboard')">Voir classement</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <aside class="card span4">
+      <h3 style="margin:0 0 10px;">Comment ça marche</h3>
+      <p class="muted" style="margin:0 0 12px;">1) Dépôt au point. 2) Scan QR (ou code). 3) Validation. 4) Points.</p>
+      <p class="muted" style="margin:0;">Le poids est contrôlé au ramassage : reporting par point.</p>
+    </aside>
+  </div>`;
+}
+
+function renderRewards(data){
+  const state=getState();
+  const pseudo=state.profile.pseudo||'';
+  const pts=pseudo?(state.pointsByUser[pseudo]||0):0;
+  const rewards=[
+    {name:"Bon partenaire 5€", cost:100, note:"Ex: café/snack partenaire (pilote)."},
+    {name:"Bon partenaire 10€", cost:200, note:"Ex: réduction enseigne partenaire."},
+    {name:"Badge “Top Collecteur”", cost:300, note:"Badge + bonus futur (concept)."},
+    {name:"Premium 1 mois (sans pubs)", cost:250, note:"Suppression pubs + bonus (concept)."}
+  ];
+  const rows=rewards.map(r=>`<tr><td><strong>${esc(r.name)}</strong><div class="small">${esc(r.note)}</div></td><td class="mono">${r.cost}</td><td class="right"><button class="btn secondary" onclick="redeem(${r.cost}, '${String(r.name).replaceAll("'","\\'")}')">Échanger</button></td></tr>`).join('');
+  return `<div class="grid">
+    <section class="card span8">
+      <h2 style="margin:0 0 10px;">Mes récompenses</h2>
+      <p class="muted" style="margin:0 0 12px;">Catalogue fictif pour illustrer la fidélisation (financé via partenaires en réel).</p>
+      <div class="notice"><div class="row">
+        <div><div class="muted" style="font-size:12px;">Pseudo</div><div style="font-weight:800; margin-top:4px;">${pseudo?esc(pseudo):'—'}</div></div>
+        <div class="right"><div class="muted" style="font-size:12px;">Points</div><div style="font-weight:900; font-size:20px;" class="mono">${pts}</div></div>
+      </div></div>
+      <div style="margin-top:14px;"><table><thead><tr><th>Récompense</th><th>Coût (pts)</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
+    </section>
+    <aside class="card span4">
+      <h3 style="margin:0 0 10px;">Monétisation</h3>
+      <p class="muted" style="margin:0;">Le modèle peut combiner : vente/commission B2B, pubs in-app, abonnement premium.</p>
+    </aside>
+  </div>`;
+}
+
+function renderLeaderboard(data){
+  const state=getState();
+  const entries=Object.entries(state.pointsByUser||{}).map(([user,pts])=>({user,pts})).sort((a,b)=>b.pts-a.pts).slice(0,50);
+  const rows=entries.map((e,i)=>`<tr><td class="mono">${i+1}</td><td><strong>${esc(e.user)}</strong></td><td class="mono">${e.pts}</td></tr>`).join('') || `<tr><td colspan="3" class="muted">Aucun dépôt pour l'instant.</td></tr>`;
+  return `<div class="grid">
+    <section class="card span8">
+      <h2 style="margin:0 0 10px;">Classement</h2>
+      <p class="muted" style="margin:0 0 12px;">Classement basé sur les points cumulés (données locales).</p>
+      <table><thead><tr><th>#</th><th>Utilisateur</th><th>Points</th></tr></thead><tbody>${rows}</tbody></table>
+    </section>
+    <aside class="card span4">
+      <h3 style="margin:0 0 10px;">Défis (exemples)</h3>
+      <p class="muted" style="margin:0 0 10px;">Défi hebdo : “+100 pts en 7 jours” • Défi collectif : “Top Résidence / Top Campus”.</p>
+      <button class="btn" onclick="setRoute('deposit')">Gagner des points</button>
+    </aside>
+  </div>`;
+}
+
+function canDepositToday(state, pseudo){ if(!pseudo) return false; const last=(state.lastDepositByUser||{})[pseudo]; return last!==todayKey(); }
+
+function submitDeposit(){
+  const data=window.__data;
+  const state=getState();
+  const pseudo=(document.getElementById('depPseudo').value||'').trim();
+  const point=document.getElementById('depPoint').value;
+  const needId=document.getElementById('depNeed').value;
+  if(!pseudo) return alert('Entre un pseudo.');
+  if(!point) return alert('Choisis un point.');
+  if(!canDepositToday(state, pseudo)) return alert('Règle MVP : 1 dépôt max par jour et par utilisateur.');
+  const {need, points}=computeDepositPoints(data, needId);
+  const deposits=state.deposits||[];
+  deposits.push({ts:new Date().toISOString(), date:todayKey(), pseudo, point, needId:need.id, needLabel:need.label, points});
+  saveDeposits(deposits);
+  const ptsMap=state.pointsByUser||{};
+  ptsMap[pseudo]=(ptsMap[pseudo]||0)+points;
+  savePoints(ptsMap);
+  const lastMap=state.lastDepositByUser||{};
+  lastMap[pseudo]=todayKey();
+  saveLastDeposit(lastMap);
+  if(!state.profile.pseudo) saveProfile({pseudo});
+  alert(`Dépôt validé ✅ +${points} points (${need.label})`);
+  setRoute('rewards');
+  render();
+}
+
+function redeem(cost, name){
+  const state=getState();
+  const pseudo=state.profile.pseudo||'';
+  if(!pseudo) return alert('Définis un pseudo d’abord.');
+  const pts=state.pointsByUser[pseudo]||0;
+  if(pts<cost) return alert('Pas assez de points.');
+  if(!confirm(`Échanger ${cost} points contre : ${name} ?`)) return;
+  state.pointsByUser[pseudo]=pts-cost;
+  savePoints(state.pointsByUser);
+  alert('Récompense enregistrée (MVP).');
+  render();
+}
+
+async function render(){
+  const {route, params}=parseHash();
+  activeTab(route);
+  const app=document.getElementById('app');
+  const data=window.__data || await loadData().catch(err=>{ app.innerHTML=`<div class="card"><strong>Erreur</strong><div class="muted">${esc(err.message)}</div><div class="small" style="margin-top:10px;">Astuce : lance un serveur local (README).</div></div>`; throw err; });
+  window.__data=data;
+  if(route==='home') app.innerHTML=renderHome(data);
+  else if(route==='needs') app.innerHTML=renderNeeds(data);
+  else if(route==='points') app.innerHTML=renderPoints(data);
+  else if(route==='deposit') app.innerHTML=renderDeposit(data, params);
+  else if(route==='rewards') app.innerHTML=renderRewards(data);
+  else if(route==='leaderboard') app.innerHTML=renderLeaderboard(data);
+  else app.innerHTML=renderHome(data);
+}
+
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click', ()=>setRoute(btn.dataset.route)));
+window.addEventListener('hashchange', render);
+render();
+</script>
+</body>
+</html>

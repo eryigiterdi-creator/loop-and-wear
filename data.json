@@ -1,0 +1,70 @@
+{
+  "project_name": "ReLoop",
+  "city": "Strasbourg",
+  "points": [
+    {
+      "id": "STR-01",
+      "name": "Unistra – Le Patio (Campus Esplanade)",
+      "address": "22 Rue René Descartes, 67000 Strasbourg",
+      "maps": "https://maps.google.com/?q=22%20Rue%20Ren%C3%A9%20Descartes%2C%2067000%20Strasbourg"
+    },
+    {
+      "id": "STR-02",
+      "name": "CROUS – Résidence Gallia",
+      "address": "1 Boulevard de la Victoire, 67000 Strasbourg",
+      "maps": "https://maps.google.com/?q=1%20Boulevard%20de%20la%20Victoire%2C%2067000%20Strasbourg"
+    },
+    {
+      "id": "STR-03",
+      "name": "Centre commercial Rivetoile",
+      "address": "3 Place Dauphine, 67100 Strasbourg",
+      "maps": "https://maps.google.com/?q=3%20Place%20Dauphine%2C%2067100%20Strasbourg"
+    },
+    {
+      "id": "STR-04",
+      "name": "Centre commercial Place des Halles",
+      "address": "24 Place des Halles, 67000 Strasbourg",
+      "maps": "https://maps.google.com/?q=24%20Place%20des%20Halles%2C%2067000%20Strasbourg"
+    },
+    {
+      "id": "STR-05",
+      "name": "Service de Santé Étudiante (SSE) – Esplanade",
+      "address": "6 Rue de Palerme, 67000 Strasbourg",
+      "maps": "https://maps.google.com/?q=6%20Rue%20de%20Palerme%2C%2067000%20Strasbourg"
+    }
+  ],
+  "needs": [
+    {
+      "id": "N-001",
+      "label": "Denim / jeans",
+      "priority": "Urgent",
+      "base_points": 10,
+      "bonus_points": 5,
+      "why": "Demande forte pour valorisation (fibres robustes)."
+    },
+    {
+      "id": "N-002",
+      "label": "Coton (t-shirts, sweats)",
+      "priority": "Normal",
+      "base_points": 10,
+      "bonus_points": 0,
+      "why": "Flux courant, facile à trier."
+    },
+    {
+      "id": "N-003",
+      "label": "Textiles très abîmés (recyclage)",
+      "priority": "Normal",
+      "base_points": 8,
+      "bonus_points": 0,
+      "why": "Alimente la filière recyclage."
+    },
+    {
+      "id": "N-004",
+      "label": "Manteaux / textiles épais",
+      "priority": "Normal",
+      "base_points": 12,
+      "bonus_points": 0,
+      "why": "Valeur matière, moins fréquent donc mieux rémunéré."
+    }
+  ]
+}
