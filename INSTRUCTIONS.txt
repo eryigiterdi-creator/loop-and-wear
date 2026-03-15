@@ -1,0 +1,17 @@
+# Pack de fichiers à intégrer (ReLoop)
+Ce pack met à jour ton site GitHub Pages https://eryigiterdi-creator.github.io/reloop/
+
+## Contenu
+- index.html (logo + liens utiles + textes)
+- data.json (points + besoins)
+- assets/logo.svg (logo placeholder)
+- qrcodes/STR-0X.png (QR codes corrigés vers https://eryigiterdi-creator.github.io/reloop/#deposit?point=STR-0X)
+
+## Comment intégrer sur GitHub
+1) Ouvre ton dépôt GitHub `reloop`
+2) Remplace `index.html` par celui du pack
+3) Ajoute le dossier `assets/`
+4) Remplace le dossier `qrcodes/` par celui du pack
+5) (Optionnel) Remplace `data.json` si tu veux repartir sur les valeurs proposées
+6) Commit changes
+7) Attends ~1 minute puis recharge ton site
