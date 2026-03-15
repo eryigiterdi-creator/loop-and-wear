@@ -1,49 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>ReLoop – App (MVP)</title>
-  <meta name="description" content="App MVP."/>
-  <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml"/>
-  <link rel="stylesheet" href="./css/style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReLoop – App MVP</title>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-<header>
-  <div class="wrap navbar">
-    <a class="brand" href="./index.html">
-      <span class="mark"><img src="./assets/logo.svg" alt="ReLoop"/></span>
-      <span class="txt"><strong>ReLoop</strong><span>Collecte textile à la demande • Strasbourg</span></span>
-    </a>
-    <nav>
-      <a class="navlink" href="./index.html">Accueil</a>
-      <a class="navlink" href="./entreprises.html">Entreprises</a>
-      <a class="navlink" href="./collecte.html">Points</a>
-      <a class="navlink" href="./impact.html">Impact</a>
-      <a class="navlink" href="./faq.html">FAQ</a>
-      <a class="navlink" href="./app.html">App</a>
-    </nav>
-  </div>
-</header>
-<main class="wrap">
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html"><div class="logo">RL</div><div class="brand-text"><h1>ReLoop</h1><p>Collecte textile à la demande • Strasbourg</p></div></a>
+      <nav class="nav-links">
+        <a data-nav href="index.html">Accueil</a>
+        <a data-nav href="entreprises.html">Entreprises</a>
+        <a data-nav href="collecte.html">Points</a>
+        <a data-nav href="impact.html">Impact</a>
+        <a data-nav href="faq.html">FAQ</a>
+        <a data-nav href="app.html">App</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container hero">
+    <section class="card">
+      <h2 style="font-size:2.55rem;margin:0 0 12px">ReLoop – App de dépôt</h2>
+      <p class="lead">Le dépôt redevient complet : choix du point, catégories de vêtements, calcul de kg, système de points et historique des validations.</p>
+      <div id="selected-point-details"></div>
+    </section>
 
-<section class="card">
-  <h1 class="h1" style="font-size:28px;">ReLoop – App (MVP)</h1>
-  <p class="p">Prototype : validation de dépôt, points et classement (données locales).</p>
-  <div class="btnRow">
-    <a class="btn secondary" href="./collecte.html">Voir les points</a>
-    <a class="btn secondary" href="./entreprises.html">Espace entreprises</a>
-  </div>
-</section>
+    <section class="section deposit-grid" id="app">
+      <article class="card">
+        <h3 class="section-title">Valider un dépôt</h3>
+        <p class="section-copy">Sélectionne un point puis indique les vêtements déposés.</p>
+        <form id="deposit-form">
+          <div class="form-grid">
+            <div class="full">
+              <label class="small muted">Nom / pseudo</label>
+              <input id="user-name" class="input" type="text" placeholder="Ex. Erdi / Étudiant GEA">
+            </div>
+            <div class="full">
+              <label class="small muted">Point de collecte</label>
+              <select id="point-select" class="select"></select>
+            </div>
+          </div>
+          <h3 style="margin:18px 0 10px">Choisir les articles déposés</h3>
+          <div class="deposit-grid" id="category-options"></div>
+          <div class="row" style="margin-top:16px">
+            <button class="btn primary" type="submit">Valider le dépôt</button>
+            <a class="btn" href="collecte.html">Retour aux points</a>
+          </div>
+        </form>
+        <div id="deposit-result"></div>
+      </article>
 
-<div data-app style="margin-top:16px;"></div>
+      <article class="card">
+        <h3 class="section-title">Classement & activité</h3>
+        <p class="section-copy">À chaque dépôt, les points sont mis à jour localement dans le navigateur.</p>
+        <div class="stats-grid" id="app-summary"></div>
+        <h3 style="margin:20px 0 10px">Derniers dépôts</h3>
+        <div id="latest-deposits"></div>
+      </article>
+    </section>
 
-  <div class="footer">
-    <div>Contact : <strong>contact@reloop-strasbourg.fr</strong> • Instagram : <strong>@reloop_strasbourg</strong></div>
-    <div style="margin-top:6px;">© ReLoop – Prototype étudiant (BUT) • Strasbourg</div>
-  </div>
-</main>
-<script src="./js/site.js"></script>
-<script src="./js/app.js"></script>
+    <section class="section">
+      <article class="card">
+        <h3 class="section-title">Leaderboard</h3>
+        <div id="ranking-table"></div>
+      </article>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><p>Contact : <strong>contact@reloop-strasbourg.fr</strong> • Instagram : <strong>@reloop_strasbourg</strong></p><p>© ReLoop – Prototype étudiant (BUT) • Strasbourg</p></div></footer>
+  <script src="assets/app.js"></script>
 </body>
 </html>
