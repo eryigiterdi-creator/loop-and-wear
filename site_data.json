@@ -1,0 +1,264 @@
+{
+  "project_name": "ReLoop",
+  "city": "Strasbourg",
+  "instagram": "@reloop_strasbourg",
+  "email": "contact@reloop-strasbourg.fr",
+  "website": "https://eryigiterdi-creator.github.io/reloop/",
+  "points": [
+    {
+      "id": "STR-01",
+      "name": "Unistra – Le Patio (Campus Esplanade)",
+      "address": "22 Rue René Descartes, 67000 Strasbourg",
+      "maps": "https://maps.google.com/?q=22%20Rue%20Ren%C3%A9%20Descartes%2C%2067000%20Strasbourg"
+    },
+    {
+      "id": "STR-02",
+      "name": "CROUS – Résidence Gallia",
+      "address": "1 Boulevard de la Victoire, 67000 Strasbourg",
+      "maps": "https://maps.google.com/?q=1%20Boulevard%20de%20la%20Victoire%2C%2067000%20Strasbourg"
+    },
+    {
+      "id": "STR-03",
+      "name": "Centre commercial Rivetoile",
+      "address": "3 Place Dauphine, 67100 Strasbourg",
+      "maps": "https://maps.google.com/?q=3%20Place%20Dauphine%2C%2067100%20Strasbourg"
+    },
+    {
+      "id": "STR-04",
+      "name": "Centre commercial Place des Halles",
+      "address": "24 Place des Halles, 67000 Strasbourg",
+      "maps": "https://maps.google.com/?q=24%20Place%20des%20Halles%2C%2067000%20Strasbourg"
+    },
+    {
+      "id": "STR-05",
+      "name": "Service de Santé Étudiante (SSE) – Esplanade",
+      "address": "6 Rue de Palerme, 67000 Strasbourg",
+      "maps": "https://maps.google.com/?q=6%20Rue%20de%20Palerme%2C%2067000%20Strasbourg"
+    }
+  ],
+  "needs": [
+    {
+      "id": "N-001",
+      "label": "Denim / jeans",
+      "priority": "Urgent",
+      "base_points": 10,
+      "bonus_points": 5,
+      "why": "Fibres robustes, forte demande en valorisation matière."
+    },
+    {
+      "id": "N-002",
+      "label": "Coton (t-shirts, sweats)",
+      "priority": "Normal",
+      "base_points": 10,
+      "bonus_points": 0,
+      "why": "Flux courant, tri simple et régulier."
+    },
+    {
+      "id": "N-003",
+      "label": "Textiles très abîmés (recyclage)",
+      "priority": "Normal",
+      "base_points": 8,
+      "bonus_points": 0,
+      "why": "Alimente la filière recyclage (chiffons, fibre)."
+    },
+    {
+      "id": "N-004",
+      "label": "Textiles épais (manteaux/vestes)",
+      "priority": "Normal",
+      "base_points": 12,
+      "bonus_points": 0,
+      "why": "Valeur matière plus élevée, volumes plus rares."
+    }
+  ],
+  "partners": [
+    {
+      "name": "Le Relais Est",
+      "tag": "Collecte & tri (cible)",
+      "url": "https://www.relaisest.org/",
+      "logo": "./assets/partners/lerelaisest.svg"
+    },
+    {
+      "name": "Refashion",
+      "tag": "Filière TLC (référence)",
+      "url": "https://refashion.fr/",
+      "logo": "./assets/partners/refashion.svg"
+    },
+    {
+      "name": "Université de Strasbourg",
+      "tag": "Réseau étudiant (cible)",
+      "url": "https://www.unistra.fr/",
+      "logo": "./assets/partners/universitdestrasbo.svg"
+    },
+    {
+      "name": "CROUS Strasbourg",
+      "tag": "Résidences & campus (cible)",
+      "url": "https://www.crous-strasbourg.fr/",
+      "logo": "./assets/partners/crousstrasbourg.svg"
+    },
+    {
+      "name": "Rivetoile",
+      "tag": "Point grand public (cible)",
+      "url": "https://rivetoile.com/",
+      "logo": "./assets/partners/rivetoile.svg"
+    },
+    {
+      "name": "Place des Halles",
+      "tag": "Point grand public (cible)",
+      "url": "https://www.placedeshalles.com/",
+      "logo": "./assets/partners/placedeshalles.svg"
+    },
+    {
+      "name": "Café L’Atelier Krutenau",
+      "tag": "Récompenses (exemple)",
+      "url": "#",
+      "logo": "./assets/partners/caflatelierkrutena.svg"
+    },
+    {
+      "name": "Boulangerie Sainte-Hélène",
+      "tag": "Récompenses (exemple)",
+      "url": "#",
+      "logo": "./assets/partners/boulangeriesainteh.svg"
+    },
+    {
+      "name": "Salle de sport FitRhine",
+      "tag": "Récompenses (exemple)",
+      "url": "#",
+      "logo": "./assets/partners/salledesportfitrhi.svg"
+    },
+    {
+      "name": "Librairie Neustadt",
+      "tag": "Récompenses (exemple)",
+      "url": "#",
+      "logo": "./assets/partners/librairieneustadt.svg"
+    },
+    {
+      "name": "Vélocargo Strasbourg",
+      "tag": "Logistique urbaine (exemple)",
+      "url": "#",
+      "logo": "./assets/partners/vlocargostrasbourg.svg"
+    },
+    {
+      "name": "GreenPerks",
+      "tag": "Cashback partenaires (exemple)",
+      "url": "#",
+      "logo": "./assets/partners/greenperks.svg"
+    },
+    {
+      "name": "Stras’Events",
+      "tag": "Stands & événements (exemple)",
+      "url": "#",
+      "logo": "./assets/partners/strasevents.svg"
+    },
+    {
+      "name": "EcoCampus Challenge",
+      "tag": "Défis inter-campus (exemple)",
+      "url": "#",
+      "logo": "./assets/partners/ecocampuschallenge.svg"
+    }
+  ],
+  "enterprise_types": [
+    {
+      "name": "Usine de valorisation textile",
+      "need": "Flux réguliers par catégories + lots traçables + livraison planifiée"
+    },
+    {
+      "name": "Collecteur / opérateur TLC",
+      "need": "Augmenter volumes + améliorer qualité (tri à la source) + data par site"
+    },
+    {
+      "name": "Entreprise (RSE) – vêtements pro",
+      "need": "Collecte interne (uniformes) + certificats + reporting mensuel"
+    },
+    {
+      "name": "Résidence étudiante / campus",
+      "need": "Collecte fin d’année + animation + classement inter-résidences"
+    },
+    {
+      "name": "Commerce / centre commercial",
+      "need": "Point de collecte attractif + image durable + trafic magasin"
+    },
+    {
+      "name": "Organisateur d’événements",
+      "need": "Stand de collecte + communication + bilan d’impact post-event"
+    }
+  ],
+  "personas": [
+    {
+      "name": "Sarah, 20 ans (étudiante)",
+      "goal": "Donner vite + gagner des points",
+      "pain": "Elle accumule des sacs en fin d’année, ne sait pas où déposer",
+      "use": "QR au campus + défi inter-fac + café offert"
+    },
+    {
+      "name": "Mehdi, 28 ans (jeune actif)",
+      "goal": "Déposer en 5 minutes près de chez lui",
+      "pain": "Horaires et confiance dans la filière",
+      "use": "Point grand public + preuve d’impact + cashback"
+    },
+    {
+      "name": "Clara, Responsable RSE",
+      "goal": "Une action concrète et mesurable",
+      "pain": "Mobiliser les salariés + rendre compte à la direction",
+      "use": "Campagne 2 semaines + reporting + certificat"
+    },
+    {
+      "name": "Yanis, BDE / Asso étudiante",
+      "goal": "Animer la communauté et gagner un challenge",
+      "pain": "Il faut une idée simple et motivante",
+      "use": "Classement résidence + lots de récompenses partenaires"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Le défi inter-résidences a fait grimper les dépôts en une semaine. Les étudiants veulent ‘faire gagner’ leur bâtiment.",
+      "name": "BDE (témoignage exemple)"
+    },
+    {
+      "quote": "Avec le reporting par point, on a des chiffres simples pour la communication RSE : volumes, participation, périodes.",
+      "name": "Référent RSE (témoignage exemple)"
+    },
+    {
+      "quote": "Le QR code enlève le doute : je valide, je gagne des points, et je sais que ça part en filière valorisation.",
+      "name": "Utilisateur (témoignage exemple)"
+    }
+  ],
+  "rewards_catalog": [
+    {
+      "name": "Café offert (boisson)",
+      "cost_points": 120,
+      "partner": "Café L’Atelier Krutenau"
+    },
+    {
+      "name": "Viennoiserie",
+      "cost_points": 90,
+      "partner": "Boulangerie Sainte-Hélène"
+    },
+    {
+      "name": "Séance découverte",
+      "cost_points": 220,
+      "partner": "Salle de sport FitRhine"
+    },
+    {
+      "name": "Bon d’achat 5€",
+      "cost_points": 200,
+      "partner": "Librairie Neustadt"
+    },
+    {
+      "name": "Abonnement Premium (1 mois)",
+      "cost_points": 250,
+      "partner": "ReLoop"
+    }
+  ],
+  "plans": [
+    {
+      "name": "Gratuit",
+      "price_month": "0€",
+      "benefits": "Points & défis, pubs discrètes"
+    },
+    {
+      "name": "Premium",
+      "price_month": "2,99€",
+      "benefits": "Sans pubs + bonus x1,1 + récompense mensuelle"
+    }
+  ]
+}

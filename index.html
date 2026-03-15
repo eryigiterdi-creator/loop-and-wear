@@ -1,270 +1,82 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ReLoop – MVP Strasbourg</title>
-  <meta name="theme-color" content="#111111" />
-  <style>
-    :root {
-      --bg:#0b0b0c; --card:#151518; --text:#f3f3f4; --muted:#b7b7be; --line:#2a2a30;
-      --accent:#7dd3fc; --accent2:#86efac; --radius:18px;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:radial-gradient(1200px 600px at 20% -10%, rgba(125,211,252,.15), transparent 60%),
-                 radial-gradient(900px 500px at 100% 0%, rgba(134,239,172,.10), transparent 55%),
-                 var(--bg); color:var(--text);}
-    header{position:sticky;top:0;background:rgba(11,11,12,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
-    .wrap{max-width:980px;margin:0 auto;padding:16px}
-    .top{display:flex;gap:12px;align-items:center;justify-content:space-between}
-    .brand{display:flex;gap:10px;align-items:center}
-    .logoBox{width:36px;height:36px;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.35);flex:0 0 auto}
-    .logoBox img{width:100%;height:100%;display:block}
-    h1{font-size:18px;margin:0}
-    .sub{font-size:12px;color:var(--muted);margin-top:2px}
-    nav{display:flex;gap:8px;flex-wrap:wrap}
-    .tab{padding:10px 12px;border-radius:999px;border:1px solid var(--line);color:var(--text);background:rgba(21,21,24,.7);cursor:pointer;font-size:13px}
-    .tab.active{border-color:rgba(125,211,252,.6);box-shadow:0 0 0 3px rgba(125,211,252,.12)}
-    main{padding:18px 0 60px}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-    .card{grid-column:span 12;background:rgba(21,21,24,.8);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
-    @media(min-width:860px){.span6{grid-column:span 6}.span4{grid-column:span 4}.span8{grid-column:span 8}}
-    .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid var(--line);color:var(--muted);background:rgba(0,0,0,.15)}
-    .tag{padding:2px 8px;border-radius:999px;font-size:12px;border:1px solid var(--line);color:var(--text)}
-    .tag.urgent{border-color:rgba(253,230,138,.6);background:rgba(253,230,138,.08)}
-    .tag.ok{border-color:rgba(134,239,172,.6);background:rgba(134,239,172,.08)}
-    .row{display:flex;gap:10px;align-items:center;justify-content:space-between}
-    .muted{color:var(--muted)}
-    .btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:10px 12px;border-radius:12px;border:1px solid rgba(125,211,252,.35);background:rgba(125,211,252,.12);color:var(--text);cursor:pointer;font-weight:600;font-size:13px;text-decoration:none}
-    .btn.secondary{border-color:var(--line);background:rgba(255,255,255,.03);font-weight:500}
-    .btn.danger{border-color:rgba(252,165,165,.45);background:rgba(252,165,165,.10)}
-    input,select{width:100%;padding:12px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--text);outline:none;font-size:14px}
-    label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
-    .small{font-size:12px;color:var(--muted)}
-    table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px;border:1px solid var(--line)}
-    th,td{padding:10px 10px;border-bottom:1px solid var(--line);font-size:13px;text-align:left}
-    th{color:var(--muted);font-weight:600;background:rgba(255,255,255,.02)}
-    tr:last-child td{border-bottom:none}
-    .notice{border:1px solid rgba(125,211,252,.35);background:rgba(125,211,252,.08);padding:12px 12px;border-radius:14px;color:var(--text)}
-    .flex{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .right{text-align:right}
-    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
-    footer{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
-  </style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ReLoop – Collecte textile à la demande (Strasbourg)</title>
+  <meta name="description" content="ReLoop connecte les besoins des usines et la collecte des citoyens."/>
+  <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml"/>
+  <link rel="stylesheet" href="./css/style.css"/>
 </head>
 <body>
 <header>
-  <div class="wrap">
-    <div class="top">
-      <div class="brand">
-        <div class="logoBox"><img src="./assets/logo.svg" alt="Logo ReLoop"></div>
-        <div>
-          <h1>ReLoop</h1>
-          <div class="sub">MVP Strasbourg • collecte textile à la demande • prototype</div>
-        </div>
-      </div>
-      <nav aria-label="Navigation">
-        <button class="tab" data-route="home">Accueil</button>
-        <button class="tab" data-route="needs">Besoins</button>
-        <button class="tab" data-route="points">Points</button>
-        <button class="tab" data-route="deposit">Déposer</button>
-        <button class="tab" data-route="rewards">Récompenses</button>
-        <button class="tab" data-route="leaderboard">Classement</button>
-      </nav>
-    </div>
+  <div class="wrap navbar">
+    <a class="brand" href="./index.html">
+      <span class="mark"><img src="./assets/logo.svg" alt="ReLoop"/></span>
+      <span class="txt"><strong>ReLoop</strong><span>Collecte textile à la demande • Strasbourg</span></span>
+    </a>
+    <nav>
+      <a class="navlink" href="./index.html">Accueil</a>
+      <a class="navlink" href="./entreprises.html">Entreprises</a>
+      <a class="navlink" href="./collecte.html">Points</a>
+      <a class="navlink" href="./impact.html">Impact</a>
+      <a class="navlink" href="./faq.html">FAQ</a>
+      <a class="navlink" href="./app.html">App</a>
+    </nav>
   </div>
 </header>
-
 <main class="wrap">
-  <div id="app"></div>
+
+<section class="hero">
+  <div class="heroGrid">
+    <div class="card span7">
+      <h1 class="h1">La collecte textile qui suit la demande des usines.</h1>
+      <p class="p">ReLoop organise la collecte à Strasbourg en connectant les <strong>besoins industriels</strong> et les <strong>apports citoyens</strong>, avec <strong>récompenses</strong>, <strong>traçabilité</strong> et <strong>reporting</strong>.</p>
+      <div class="btnRow">
+        <a class="btn" href="./app.html">Tester l’app (MVP)</a>
+        <a class="btn secondary" href="./collecte.html">Voir les points de collecte</a>
+        <a class="btn secondary" href="./entreprises.html">Je suis une entreprise</a>
+      </div>
+      <div class="pillRow">
+        <div class="pill">5 points pilotes • Strasbourg</div>
+        <div class="pill">QR codes • validation dépôt</div>
+        <div class="pill">Cashback & défis • engagement</div>
+      </div>
+    </div>
+    <div class="card span5">
+      <h2 class="sectionTitle" style="margin:0 0 8px;">Démo rapide</h2>
+      <p class="p">Scanne un QR code pour ouvrir l’app avec un point pré-sélectionné.</p>
+      <div class="notice"><div class="small">Exemple : <span class="mono">https://eryigiterdi-creator.github.io/reloop/app.html#app?point=STR-01</span></div></div>
+      <div class="btnRow">
+        <a class="btn secondary" href="./qrcodes/STR-01.png" target="_blank">Voir un QR</a>
+        <a class="btn secondary" href="./impact.html">Voir le reporting</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2 class="sectionTitle">Partenaires (exemples / cibles)</h2>
+  <p class="p">Logistique, filière TLC, points campus et partenaires récompenses (liste d’exemples pour le prototype).</p>
+  <div id="partners"></div>
+</section>
+
+<section class="card" style="margin-top:16px;">
+  <h2 class="sectionTitle">Personas (clients types)</h2>
+  <div id="personas"></div>
+</section>
+
+<section class="card" style="margin-top:16px;">
+  <h2 class="sectionTitle">Ils en parlent (exemples)</h2>
+  <div id="testimonials"></div>
+</section>
+
+  <div class="footer">
+    <div>Contact : <strong>contact@reloop-strasbourg.fr</strong> • Instagram : <strong>@reloop_strasbourg</strong></div>
+    <div style="margin-top:6px;">© ReLoop – Prototype étudiant (BUT) • Strasbourg</div>
+  </div>
 </main>
-
-<script>
-const DATA_URL = './data.json';
-function todayKey(){ const d=new Date(); return d.toISOString().slice(0,10); }
-function lsGet(k,f){ try{const v=localStorage.getItem(k); if(!v) return f; return JSON.parse(v);}catch(e){return f;} }
-function lsSet(k,v){ localStorage.setItem(k, JSON.stringify(v)); }
-function getState(){ return { profile: lsGet('reloop_profile',{pseudo:''}), deposits: lsGet('reloop_deposits',[]), pointsByUser: lsGet('reloop_points',{}), lastDepositByUser: lsGet('reloop_last_deposit',{}) }; }
-function saveProfile(p){ lsSet('reloop_profile', p); }
-function saveDeposits(d){ lsSet('reloop_deposits', d); }
-function savePoints(m){ lsSet('reloop_points', m); }
-function saveLastDeposit(m){ lsSet('reloop_last_deposit', m); }
-function esc(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
-function setRoute(r, params={}){ const q=new URLSearchParams(params).toString(); location.hash = q ? `#${r}?${q}` : `#${r}`; }
-function parseHash(){ const h=location.hash.replace('#','')||'home'; const [route,query]=h.split('?'); const params=Object.fromEntries(new URLSearchParams(query||'')); return {route,params}; }
-function activeTab(route){ document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active', b.dataset.route===route)); }
-function badge(p){ return p==='Urgent' ? '<span class="tag urgent">Urgent</span>' : '<span class="tag ok">Normal</span>'; }
-async function loadData(){ const res=await fetch(DATA_URL); if(!res.ok) throw new Error('data.json introuvable'); return await res.json(); }
-function kpiCard(t,v,h=''){ return `<div class="pill"><strong>${esc(t)} :</strong> <span class="mono">${esc(v)}</span> ${h?`<span class="muted">(${esc(h)})</span>`:''}</div>`; }
-
-function renderHome(data){
-  const s=getState(); const pseudo=s.profile.pseudo||''; const users=Object.keys(s.pointsByUser).length; const deps=s.deposits.length; const pts=pseudo?(s.pointsByUser[pseudo]||0):0;
-  const urgent=data.needs.find(n=>n.priority==='Urgent'); const urgentText=urgent?`${urgent.label} (+${urgent.base_points}+${urgent.bonus_points})`:'Aucun besoin urgent';
-  return `<div class="grid">
-    <section class="card span8">
-      <h2 style="margin:0 0 10px;">Bienvenue</h2>
-      <p class="muted" style="margin:0 0 14px;">Prototype ReLoop : besoins industriels, points de collecte, validation via QR/code, points et classement.</p>
-      <div class="notice">
-        <div class="row">
-          <div><div class="muted" style="font-size:12px;">Besoin prioritaire</div><div style="font-weight:700; margin-top:4px;">${esc(urgentText)}</div></div>
-          <button class="btn" onclick="setRoute('deposit')">Déposer</button>
-        </div>
-      </div>
-      <div style="margin-top:14px;" class="flex">
-        ${kpiCard('Utilisateurs', users, 'locaux')} ${kpiCard('Dépôts', deps, 'validés')} ${kpiCard('Mes points', pts, pseudo?pseudo:'définir pseudo')}
-      </div>
-      <div style="margin-top:16px;" class="grid">
-        <div class="card span6" style="padding:14px;">
-          <h3 style="margin:0 0 6px;">Définir un pseudo</h3>
-          <p class="muted" style="margin:0 0 10px;">Pas d’email (MVP). Le pseudo sert au classement.</p>
-          <div class="flex">
-            <input id="pseudoInput" placeholder="ex: Erdi" value="${esc(pseudo)}" />
-            <button class="btn" onclick="(function(){ const v=document.getElementById('pseudoInput').value.trim(); if(!v) return alert('Entre un pseudo'); saveProfile({pseudo:v}); render(); })()">Enregistrer</button>
-          </div>
-        </div>
-        <div class="card span6" style="padding:14px;">
-          <h3 style="margin:0 0 6px;">Liens utiles</h3>
-          <p class="muted" style="margin:0 0 10px;">Exemples de partenaires / filière.</p>
-          <div class="flex">
-            <a class="btn secondary" href="https://www.relaisest.org/" target="_blank" rel="noopener">Le Relais Est</a>
-            <a class="btn secondary" href="https://refashion.fr/" target="_blank" rel="noopener">Refashion</a>
-          </div>
-        </div>
-      </div>
-      <footer class="muted">
-        <div class="small">Base : <span class="mono">https://eryigiterdi-creator.github.io/reloop/</span> • QR : <span class="mono">https://eryigiterdi-creator.github.io/reloop/#deposit?point=STR-01</span></div>
-      </footer>
-    </section>
-
-    <aside class="card span4">
-      <h2 style="margin:0 0 10px;">Règles MVP</h2>
-      <p class="muted" style="margin:0 0 10px;">Anti-triche : 1 dépôt maximum par jour et par utilisateur.</p>
-      <p class="muted" style="margin:0 0 14px;">En réel : poids validé au ramassage et reporting mensuel.</p>
-      <button class="btn danger" onclick="(function(){ if(!confirm('Réinitialiser (effacer données locales) ?')) return; localStorage.clear(); render(); })()">Réinitialiser</button>
-    </aside>
-  </div>`;
-}
-
-function renderNeeds(data){
-  const rows=data.needs.map(n=>`<tr><td><strong>${esc(n.label)}</strong><div class="small">${esc(n.why||'')}</div></td><td>${badge(n.priority)}</td><td class="mono">${n.base_points}</td><td class="mono">${n.bonus_points}</td></tr>`).join('');
-  return `<div class="grid">
-    <section class="card span8">
-      <h2 style="margin:0 0 10px;">Besoins des usines</h2>
-      <p class="muted" style="margin:0 0 14px;">Modifie ces besoins dans data.json.</p>
-      <table><thead><tr><th>Catégorie</th><th>Priorité</th><th>Points</th><th>Bonus</th></tr></thead><tbody>${rows}</tbody></table>
-    </section>
-    <aside class="card span4"><h3 style="margin:0 0 10px;">Qualité</h3><p class="muted" style="margin:0;">Deux flux conseillés : “réutilisable” et “recyclage”.</p></aside>
-  </div>`;
-}
-
-function renderPoints(data){
-  const cards=data.points.map(p=>`<div class="card span6">
-    <div class="row">
-      <div>
-        <div class="muted" style="font-size:12px;">Point ${esc(p.id)}</div>
-        <div style="font-weight:800; margin-top:4px;">${esc(p.name)}</div>
-        <div class="muted" style="margin-top:4px;">${esc(p.address)}</div>
-      </div>
-      <div class="right"><a class="btn secondary" href="${esc(p.maps)}" target="_blank" rel="noopener">Maps</a></div>
-    </div>
-    <div style="margin-top:12px;" class="flex">
-      <button class="btn" onclick="setRoute('deposit',{point:'${esc(p.id)}'})">Déposer ici</button>
-      <span class="pill">QR : <span class="mono">${esc(p.id)}</span></span>
-    </div>
-  </div>`).join('');
-  return `<div class="grid">
-    <section class="card span12">
-      <h2 style="margin:0 0 10px;">Points de collecte (5)</h2>
-      <p class="muted" style="margin:0 0 10px;">Chaque point a un QR code unique (dossier qrcodes/ dans le repo).</p>
-    </section>
-    ${cards}
-  </div>`;
-}
-
-function computeDepositPoints(data, needId){
-  const need=data.needs.find(n=>n.id===needId) || data.needs[0];
-  const base=need.base_points||0;
-  const bonus=(need.priority==='Urgent'?(need.bonus_points||0):0);
-  return {need, points: base+bonus};
-}
-
-function renderDeposit(data, params){
-  const s=getState(); const pseudo=s.profile.pseudo||''; const prePoint=params.point||''; const preNeed=params.need||(data.needs[0]?.id||'');
-  const pointOptions=data.points.map(p=>`<option value="${esc(p.id)}" ${p.id===prePoint?'selected':''}>${esc(p.id)} – ${esc(p.name)}</option>`).join('');
-  const needOptions=data.needs.map(n=>`<option value="${esc(n.id)}" ${n.id===preNeed?'selected':''}>${esc(n.label)} (${n.priority})</option>`).join('');
-  return `<div class="grid">
-    <section class="card span8">
-      <h2 style="margin:0 0 10px;">Valider un dépôt</h2>
-      <div class="grid">
-        <div class="card span6" style="padding:14px;"><label>Pseudo</label><input id="depPseudo" placeholder="ex: Erdi" value="${esc(pseudo)}" /></div>
-        <div class="card span6" style="padding:14px;"><label>Point</label><select id="depPoint">${pointOptions}</select></div>
-        <div class="card span12" style="padding:14px;"><label>Besoin</label><select id="depNeed">${needOptions}</select><div class="small" style="margin-top:8px;">Bonus si urgent.</div></div>
-        <div class="card span12" style="padding:14px;">
-          <div class="row"><div class="small">Règle</div><div class="pill">1 dépôt / jour / utilisateur</div></div>
-          <div style="margin-top:12px;" class="flex"><button class="btn" onclick="submitDeposit()">Valider</button><button class="btn secondary" onclick="setRoute('leaderboard')">Classement</button></div>
-        </div>
-      </div>
-    </section>
-    <aside class="card span4"><h3 style="margin:0 0 10px;">QR</h3><p class="muted" style="margin:0;">Les QR codes pointent vers <span class="mono">https://eryigiterdi-creator.github.io/reloop/#deposit?point=STR-01</span>.</p></aside>
-  </div>`;
-}
-
-function renderRewards(data){
-  const s=getState(); const pseudo=s.profile.pseudo||''; const pts=pseudo?(s.pointsByUser[pseudo]||0):0;
-  const rewards=[{name:"Bon partenaire 5€", cost:100, note:"Ex: café/snack partenaire."},{name:"Bon partenaire 10€", cost:200, note:"Ex: réduction enseigne."},{name:"Premium 1 mois (sans pubs)", cost:250, note:"Suppression pubs + bonus."}];
-  const rows=rewards.map(r=>`<tr><td><strong>${esc(r.name)}</strong><div class="small">${esc(r.note)}</div></td><td class="mono">${r.cost}</td><td class="right"><button class="btn secondary" onclick="redeem(${r.cost}, '${String(r.name).replaceAll("'","\\'")}')">Échanger</button></td></tr>`).join('');
-  return `<div class="grid"><section class="card span8"><h2 style="margin:0 0 10px;">Récompenses</h2>
-    <div class="notice"><div class="row"><div><div class="muted" style="font-size:12px;">Pseudo</div><div style="font-weight:800; margin-top:4px;">${pseudo?esc(pseudo):'—'}</div></div><div class="right"><div class="muted" style="font-size:12px;">Points</div><div style="font-weight:900; font-size:20px;" class="mono">${pts}</div></div></div></div>
-    <div style="margin-top:14px;"><table><thead><tr><th>Récompense</th><th>Coût</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
-  </section><aside class="card span4"><h3 style="margin:0 0 10px;">Partenaires</h3><p class="muted" style="margin:0;">Ajoute tes partenaires (café, salle de sport, etc.) pour financer les récompenses.</p></aside></div>`;
-}
-
-function renderLeaderboard(data){
-  const s=getState(); const entries=Object.entries(s.pointsByUser||{}).map(([u,p])=>({u,p})).sort((a,b)=>b.p-a.p).slice(0,50);
-  const rows=entries.map((e,i)=>`<tr><td class="mono">${i+1}</td><td><strong>${esc(e.u)}</strong></td><td class="mono">${e.p}</td></tr>`).join('')||`<tr><td colspan="3" class="muted">Aucun dépôt pour l’instant.</td></tr>`;
-  return `<div class="grid"><section class="card span8"><h2 style="margin:0 0 10px;">Classement</h2><table><thead><tr><th>#</th><th>Utilisateur</th><th>Points</th></tr></thead><tbody>${rows}</tbody></table></section>
-  <aside class="card span4"><h3 style="margin:0 0 10px;">Défis</h3><p class="muted" style="margin:0 0 10px;">Défi collectif : Top Campus vs Top Résidence.</p><button class="btn" onclick="setRoute('deposit')">Déposer</button></aside></div>`;
-}
-
-function canDepositToday(s,pseudo){ if(!pseudo) return false; const last=(s.lastDepositByUser||{})[pseudo]; return last!==todayKey(); }
-function submitDeposit(){
-  const data=window.__data; const s=getState();
-  const pseudo=(document.getElementById('depPseudo').value||'').trim();
-  const point=document.getElementById('depPoint').value;
-  const needId=document.getElementById('depNeed').value;
-  if(!pseudo) return alert('Entre un pseudo.');
-  if(!point) return alert('Choisis un point.');
-  if(!canDepositToday(s,pseudo)) return alert('Règle MVP : 1 dépôt max / jour / utilisateur.');
-  const r=computeDepositPoints(data, needId);
-  const deps=s.deposits||[]; deps.push({ts:new Date().toISOString(), date:todayKey(), pseudo, point, needId:r.need.id, needLabel:r.need.label, points:r.points});
-  saveDeposits(deps);
-  const ptsMap=s.pointsByUser||{}; ptsMap[pseudo]=(ptsMap[pseudo]||0)+r.points; savePoints(ptsMap);
-  const lastMap=s.lastDepositByUser||{}; lastMap[pseudo]=todayKey(); saveLastDeposit(lastMap);
-  if(!s.profile.pseudo) saveProfile({pseudo});
-  alert(`Dépôt validé ✅ +${r.points} points (${r.need.label})`); setRoute('rewards'); render();
-}
-function redeem(cost,name){ const s=getState(); const pseudo=s.profile.pseudo||''; if(!pseudo) return alert('Définis un pseudo d’abord.'); const pts=s.pointsByUser[pseudo]||0;
-  if(pts<cost) return alert('Pas assez de points.'); if(!confirm(`Échanger ${cost} points contre : ${name} ?`)) return;
-  s.pointsByUser[pseudo]=pts-cost; savePoints(s.pointsByUser); alert('Récompense enregistrée (MVP).'); render();
-}
-
-async function render(){
-  const h=parseHash(); activeTab(h.route);
-  const app=document.getElementById('app');
-  const data=window.__data || await loadData().catch(err=>{ app.innerHTML=`<div class="card"><strong>Erreur</strong><div class="muted">${esc(err.message)}</div></div>`; throw err; });
-  window.__data=data;
-  if(h.route==='home') app.innerHTML=renderHome(data);
-  else if(h.route==='needs') app.innerHTML=renderNeeds(data);
-  else if(h.route==='points') app.innerHTML=renderPoints(data);
-  else if(h.route==='deposit') app.innerHTML=renderDeposit(data, h.params);
-  else if(h.route==='rewards') app.innerHTML=renderRewards(data);
-  else if(h.route==='leaderboard') app.innerHTML=renderLeaderboard(data);
-  else app.innerHTML=renderHome(data);
-}
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>setRoute(b.dataset.route)));
-window.addEventListener('hashchange', render);
-render();
-</script>
+<script src="./js/site.js"></script>
+<script src="./js/home.js"></script>
 </body>
 </html>

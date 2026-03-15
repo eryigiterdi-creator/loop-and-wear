@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120">
+  <rect x="10" y="10" width="340" height="100" rx="22" fill="#151518" stroke="#2a2a30"/>
+  <circle cx="60" cy="60" r="26" fill="#0b0b0c" stroke="#2a2a30"/>
+  <path d="M52 60c0-8 6-14 14-14h10v10H66c-2 0-4 2-4 4s2 4 4 4h18v10H66c-8 0-14-6-14-14Z" fill="#7dd3fc" opacity="0.9"/>
+  <text x="100" y="54" fill="#f3f3f4" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="20" font-weight="800">Stras’Events</text>
+  <text x="100" y="78" fill="#b7b7be" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="14">Stands & événements (exemple)</text>
+</svg>
