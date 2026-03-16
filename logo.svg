@@ -1,6 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7dd3fc"/><stop offset="1" stop-color="#86efac"/></linearGradient></defs>
-  <rect x="56" y="56" width="400" height="400" rx="120" fill="url(#g)"/>
-  <path d="M188 256c0-44 36-80 80-80h40v40h-40c-22 0-40 18-40 40s18 40 40 40h96v40h-96c-44 0-80-36-80-80Z" fill="#0b0b0c" opacity="0.92"/>
-  <path d="M324 256c0 44-36 80-80 80h-40v-40h40c22 0 40-18 40-40s-18-40-40-40H148v-40h96c44 0 80 36 80 80Z" fill="#0b0b0c" opacity="0.62"/>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ReLoop logo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1d16"/>
+      <stop offset="100%" stop-color="#102a43"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="170" fill="none" stroke="url(#leaf)" stroke-width="34" stroke-linecap="round" stroke-dasharray="830 260" transform="rotate(-22 256 256)"/>
+  <path d="M331 132c-41 8-82 39-100 77 45 2 90-14 120-46 11-12 19-22 26-41-17 0-29 2-46 10z" fill="#34d399"/>
+  <path d="M319 317c-24 20-53 31-83 34v46c0 11 9 20 20 20h0c11 0 20-9 20-20v-49c31-7 58-23 80-47 8-9 8-23-1-31h0c-9-8-23-7-31 2-5 6-12 12-18 17-19 16-39 24-67 26" fill="#7dd3fc" opacity="0.9"/>
+  <text x="256" y="290" text-anchor="middle" font-size="92" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#ffffff">RL</text>
 </svg>

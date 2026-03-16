@@ -29,3 +29,9 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 .highlight{background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(6,182,212,.12));border:1px solid rgba(6,182,212,.18)}
 .top3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.topbox{padding:18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.04);text-align:center}.topbox strong{display:block;font-size:26px}
 @media (max-width:930px){.grid-2,.grid-3,.split,.kpis,.top3{grid-template-columns:1fr}.hero h2{font-size:38px}.menu{display:none}}
+
+.brand-logo{width:46px;height:46px;display:block;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.25)}
+.logo{display:none}
+.hero .card,.section .card{backdrop-filter:blur(8px)}
+.hero{background:radial-gradient(circle at top left,rgba(52,211,153,.12),transparent 30%),radial-gradient(circle at top right,rgba(125,211,252,.12),transparent 30%)}
+.offer ul{padding-left:18px}.offer li{margin:8px 0;color:#dbe7f3}

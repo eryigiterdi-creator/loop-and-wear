@@ -23,12 +23,12 @@ const entreprisesDefault = [
 ];
 
 const partnersData = [
-  { nom: 'Rivetoile Food Corner', offre: '5 € offerts dès 60 points', type: 'Restauration / shopping' },
-  { nom: 'Café Campus Esplanade', offre: 'Boisson offerte dès 35 points', type: 'Campus' },
-  { nom: 'Cinéma Vox', offre: 'Place réduite dès 90 points', type: 'Loisir' },
-  { nom: 'Friperie Seconde Chance', offre: '10 % de remise dès 50 points', type: 'Mode circulaire' },
-  { nom: 'Librairie Kléber', offre: 'Bon de 7 € dès 100 points', type: 'Culture' },
-  { nom: 'Atelier Vélo Gare', offre: 'Révision express dès 80 points', type: 'Mobilité' }
+  { nom: 'Cinéma Vox Strasbourg', offre: '1 place à tarif réduit dès 90 points', type: 'Culture / loisir' },
+  { nom: 'Boutique officielle Racing Club de Strasbourg', offre: '10 % de réduction dès 200 points', type: 'Sport / merchandising' },
+  { nom: 'Rivetoile – boutiques partenaires', offre: 'Bon shopping de 5 € dès 120 points', type: 'Centre commercial' },
+  { nom: 'Librairie Kléber', offre: 'Bon lecture de 7 € dès 100 points', type: 'Culture' },
+  { nom: 'Café Bretelles Strasbourg', offre: 'Boisson offerte dès 60 points', type: 'Food' },
+  { nom: 'UGC Ciné Cité Strasbourg', offre: 'Réduction séance dès 100 points', type: 'Cinéma' }
 ];
 
 const offersData = [
