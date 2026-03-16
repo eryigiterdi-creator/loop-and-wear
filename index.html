@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -28,6 +29,7 @@
         <a href="#cashback">Cashback</a>
         <a href="#classement">Classement</a>
         <a href="#abonnements">Abonnements</a>
+        <a href="#collecte-map-section">Collecte</a>
         <a href="#partenaires">Partenaires</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -77,7 +79,9 @@
               </article>
             </div>
             <div class="status-footer">Chaque dépôt validé débloque un usage concret dans l'application</div>
+            <div class="live-feedback" id="live-feedback">Aucune action en cours. Teste les boutons pour simuler un vrai parcours utilisateur.</div>
           </div>
+          <div class="wallet-history" id="wallet-history">Dernière action : aucune dépense enregistrée.</div>
         </div>
       </div>
     </section>
@@ -150,8 +154,8 @@
               <span><strong>Gain :</strong> 40 à 120 points</span>
             </div>
             <div class="campaign-actions">
-              <button class="btn btn-primary small-btn">Réserver mon dépôt</button>
-              <button class="btn btn-secondary small-btn">Voir l'usage des points</button>
+              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Denim en bon état" data-points="120">Réserver mon dépôt</button>
+              <button class="btn btn-secondary small-btn usage-btn" data-usage="Bon d'achat seconde main et réduction sur revente">Voir l'usage des points</button>
             </div>
             <div class="campaign-footer">
               <span>Points utilisables en bon d'achat revente</span>
@@ -174,8 +178,8 @@
               <span><strong>Gain :</strong> 25 à 90 points</span>
             </div>
             <div class="campaign-actions">
-              <button class="btn btn-primary small-btn">Réserver mon dépôt</button>
-              <button class="btn btn-secondary small-btn">Voir l'usage des points</button>
+              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Sweats unis &amp; chemises épaisses" data-points="90">Réserver mon dépôt</button>
+              <button class="btn btn-secondary small-btn usage-btn" data-usage="Atelier premium, accès anticipé et réservation prioritaire">Voir l'usage des points</button>
             </div>
             <div class="campaign-footer">
               <span>Points utilisables en atelier premium</span>
@@ -198,8 +202,8 @@
               <span><strong>Gain :</strong> 30 à 80 points</span>
             </div>
             <div class="campaign-actions">
-              <button class="btn btn-primary small-btn">Réserver mon dépôt</button>
-              <button class="btn btn-secondary small-btn">Voir l'usage des points</button>
+              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Manteaux &amp; vêtements chauds" data-points="80">Réserver mon dépôt</button>
+              <button class="btn btn-secondary small-btn usage-btn" data-usage="Bonus solidaire et visibilité accrue dans le classement">Voir l'usage des points</button>
             </div>
             <div class="campaign-footer">
               <span>Points utilisables en bonus solidaire</span>
@@ -222,13 +226,14 @@
               <span><strong>Gain :</strong> 10 à 35 points</span>
             </div>
             <div class="campaign-actions">
-              <button class="btn btn-primary small-btn">Réserver mon dépôt</button>
-              <button class="btn btn-secondary small-btn">Voir l'usage des points</button>
+              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Textiles abîmés triés par type" data-points="35">Réserver mon dépôt</button>
+              <button class="btn btn-secondary small-btn usage-btn" data-usage="Réduction sur l'abonnement et frais de service">Voir l'usage des points</button>
             </div>
             <div class="campaign-footer">
               <span>Points utilisables en frais d'abonnement</span>
               <span>Campagne continue</span>
             </div>
+            <div class="subscription-status" id="subscription-status">Abonnement actuel : Loop Standard</div>
           </article>
         </div>
       </div>
@@ -400,6 +405,48 @@
       </div>
     </section>
 
+
+    <section class="section" id="collecte-map-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Points de collecte</span>
+          <h2>5 emplacements visibles sur la carte</h2>
+          <p>La maquette affiche cinq points de collecte strasbourgeois pour rendre le parcours concret : l'utilisateur voit où déposer ses textiles et peut ouvrir l'adresse dans Google Maps.</p>
+        </div>
+
+        <div class="map-layout">
+          <div id="collecte-map" class="collecte-map" aria-label="Carte des points de collecte"></div>
+          <div class="map-list">
+            <button class="map-card active" data-lat="48.584303" data-lng="7.760876" data-name="Vétis · Esplanade">
+              <strong>Vétis · Esplanade</strong>
+              <span>19 rue Vauban, 67000 Strasbourg</span>
+              <small>Dépôt textile / point recommandé</small>
+            </button>
+            <button class="map-card" data-lat="48.584574" data-lng="7.714827" data-name="Vétis · Route des Romains">
+              <strong>Vétis · Route des Romains</strong>
+              <span>50 route des Romains, 67200 Strasbourg</span>
+              <small>Dépôt textile / point recommandé</small>
+            </button>
+            <button class="map-card" data-lat="48.573777" data-lng="7.725957" data-name="Emmaüs Montagne Verte">
+              <strong>Emmaüs Montagne Verte</strong>
+              <span>5 chemin de la Holtzmatt, 67200 Strasbourg</span>
+              <small>Collecte textile / point recommandé</small>
+            </button>
+            <button class="map-card" data-lat="48.581837" data-lng="7.748930" data-name="Le Léopard">
+              <strong>Le Léopard</strong>
+              <span>8 rue des Veaux, 67000 Strasbourg</span>
+              <small>Collecte textile / point recommandé</small>
+            </button>
+            <button class="map-card" data-lat="48.581080" data-lng="7.738250" data-name="La Coopette">
+              <strong>La Coopette</strong>
+              <span>5 rue de la Coopérative, 67000 Strasbourg</span>
+              <small>Collecte textile / point recommandé</small>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="partenaires">
       <div class="container">
         <div class="section-heading">
@@ -495,6 +542,7 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="script.js"></script>
 </body>
 </html>
