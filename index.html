@@ -1,117 +1,56 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head><link rel="stylesheet" href="./assets/styles.css">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ReLoop – Collecte textile à la demande</title>
+  <link rel="stylesheet" href="./assets/styles.css">
 </head>
-  <body>
+<body>
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="index.html">
-        <div class="logo">RL</div>
-        <div class="brand-text">
-          <h1>ReLoop</h1>
-          <p>Collecte textile à la demande • Strasbourg</p>
-        </div>
-      </a>
-      <nav class="nav-links">
-        <a data-nav href="index.html">Accueil</a>
-        <a data-nav href="entreprises.html">Entreprises</a>
-        <a data-nav href="collecte.html">Points</a>
-        <a data-nav href="impact.html">Impact</a>
-        <a data-nav href="faq.html">FAQ</a>
-        <a data-nav href="app.html">App</a>
+      <a class="brand" href="index.html"><div class="logo">RL</div><div><h1>ReLoop</h1><p>Collecte textile à la demande • Strasbourg</p></div></a>
+      <nav class="menu">
+        <a href="index.html">Accueil</a><a href="collecte.html">Points</a><a href="app.html">Déposer</a><a href="entreprises.html">Je suis une entreprise</a><a href="partenaires.html">Partenaires</a><a href="concours.html">Concours</a><a href="abonnement.html">Abonnements</a><a href="impact.html">Impact</a><a href="faq.html">FAQ</a>
       </nav>
     </div>
   </header>
 
-  <main class="container hero">
-    <section class="grid grid-2">
-      <article class="card">
-        <h2>La collecte textile qui suit la demande des usines.</h2>
-        <p class="lead">ReLoop connecte les besoins industriels, les apports citoyens et un réseau de points intelligents à Strasbourg. Dépôt par catégorie, validation en temps réel, récompenses et reporting mensuel.</p>
-        <div class="row">
-          <a class="btn primary" href="app.html">Tester l’app (MVP)</a>
-          <a class="btn" href="collecte.html">Voir les points de collecte</a>
-          <a class="btn" href="entreprises.html">Je suis une entreprise</a>
-        </div>
-        <div class="badges">
-          <span class="badge">5 points pilotes • Strasbourg</span>
-          <span class="badge">Choix jean, t-shirt, pull, veste…</span>
-          <span class="badge">Cashback & défis • engagement</span>
-        </div>
-      </article>
-      <aside class="card">
-        <h3 class="section-title">Démo rapide</h3>
-        <p class="section-copy">Chaque point possède un lien de dépôt pré-sélectionné, comme un QR code. Le système de points est recalculé automatiquement après chaque dépôt.</p>
-        <div class="result-box">
-          <p class="small muted">Exemple de lien QR</p>
-          <p style="word-break:break-all;margin:0">app.html#app?point=STR-01</p>
-        </div>
-        <div class="row" style="margin-top:14px">
-          <a class="btn primary" href="collecte.html">Voir les points</a>
-          <a class="btn" href="impact.html">Voir le reporting</a>
+  <main class="hero">
+    <div class="container grid grid-2">
+      <section class="card">
+        <h2>La collecte textile qui suit la demande locale.</h2>
+        <p class="lead">ReLoop relie les dépôts citoyens, les points de collecte de Strasbourg et les acteurs qui revalorisent les textiles. Cashback, concours, reporting et demandes entreprises dans un seul service.</p>
+        <div class="badges"><span class="badge">Strasbourg pilote</span><span class="badge">Cashback partenaires</span><span class="badge">Concours mensuel</span><span class="badge">Demandes entreprises visibles</span></div>
+      </section>
+      <aside class="card highlight">
+        <div class="hero-mini"><h2>Impact du pilote</h2><p class="muted">Chiffres de démonstration pour le prototype étudiant.</p></div>
+        <div class="kpis" style="grid-template-columns:repeat(2,1fr);margin-top:12px;">
+          <div class="kpi"><span class="small">Dépôts validés</span><strong data-stat="depots">184</strong></div>
+          <div class="kpi"><span class="small">Kg collectés</span><strong><span data-stat="kg">512.4</span> kg</strong></div>
+          <div class="kpi"><span class="small">Points distribués</span><strong data-stat="points">4310</strong></div>
+          <div class="kpi"><span class="small">Partenaires activés</span><strong>6</strong></div>
         </div>
       </aside>
-    </section>
-
-    <section class="section">
-      <div class="stats-grid" id="app-summary">
-        <div class="kpi card"><strong>0</strong><span class="muted">dépôts validés</span></div>
-        <div class="kpi card"><strong>0 kg</strong><span class="muted">textiles collectés</span></div>
-        <div class="kpi card"><strong>0</strong><span class="muted">points distribués</span></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <article class="card">
-        <h3 class="section-title">Partenaires cibles</h3>
-        <p class="section-copy">Un prototype crédible pour ton oral : logistique locale, revalorisation textile, campus, commerces partenaires et entreprises demandeuses de matière.</p>
-        <div class="partner-grid">
-          <div class="card partner-card"><span class="chip">Logistique</span><h3>CTS / Gare / hubs urbains</h3><p class="muted">Points visibles, flux fréquents et accès simple.</p></div>
-          <div class="card partner-card"><span class="chip">Campus</span><h3>CROUS / BDE / écoles</h3><p class="muted">Collecte régulière auprès des étudiants.</p></div>
-          <div class="card partner-card"><span class="chip">Retail</span><h3>Friperies / concept stores</h3><p class="muted">Récompenses et bons d’achat locaux.</p></div>
-          <div class="card partner-card"><span class="chip">Industrie</span><h3>Ateliers de revalorisation</h3><p class="muted">Besoin matière, tri et valorisation.</p></div>
-        </div>
-      </article>
-    </section>
-
-    <section class="section">
-      <div class="persona-grid">
-        <article class="card persona-card">
-          <span class="chip">Persona 1</span>
-          <h3>Étudiant engagé</h3>
-          <p class="muted">Veut déposer vite sur le campus, gagner quelques points et suivre son impact.</p>
-        </article>
-        <article class="card persona-card">
-          <span class="chip">Persona 2</span>
-          <h3>Famille de quartier</h3>
-          <p class="muted">Cherche un point proche, simple et fiable pour vider régulièrement les armoires.</p>
-        </article>
-        <article class="card persona-card">
-          <span class="chip">Persona 3</span>
-          <h3>Responsable collecte</h3>
-          <p class="muted">Suit les volumes, compare les emplacements et consolide le reporting mensuel.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="feed-grid">
-        <article class="card feed-card"><span class="chip">Avis prototype</span><h3>Campus Esplanade</h3><p class="muted">« Dépôt rapide, l’app indique tout de suite combien de points j’ai gagnés. »</p></article>
-        <article class="card feed-card"><span class="chip">Avis prototype</span><h3>Point Gare</h3><p class="muted">« Très pratique en centre-ville, surtout avec la sélection par type de vêtement. »</p></article>
-        <article class="card feed-card"><span class="chip">Avis prototype</span><h3>Atelier partenaire</h3><p class="muted">« La traçabilité par point aide à savoir où renforcer les tournées. »</p></article>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>Contact : <strong>contact@reloop-strasbourg.fr</strong> • Instagram : <strong>@reloop_strasbourg</strong></p>
-      <p>© ReLoop – Prototype étudiant (BUT) • Strasbourg</p>
-    </div>
-  </footer>
-  <script src="assets/app.js"></script>
+  <section class="section"><div class="container grid grid-3">
+    <div class="card"><h3>Pourquoi ce service</h3><p class="muted">Rendre le tri textile plus simple, visible et motivant, avec des débouchés locaux et un suivi clair.</p></div>
+    <div class="card"><h3>Pour les déposeurs</h3><p class="muted">Récompenses, concours, cashback et expérience plus concrète qu’une borne classique.</p></div>
+    <div class="card"><h3>Pour les entreprises</h3><p class="muted">Demander des flux textiles selon leurs besoins et voir les volumes disponibles sur le territoire.</p></div>
+  </div></section>
+
+  <section class="section"><div class="container split">
+    <div class="card"><h3 class="section-title">Ce qu’on suit</h3><div class="list">
+      <div class="partner"><h4>Réemploi local</h4><div class="small">Textiles orientés vers des ateliers, acteurs d’upcycling et structures de tri.</div></div>
+      <div class="partner"><h4>Engagement citoyen</h4><div class="small">Les points et le concours créent un usage récurrent.</div></div>
+      <div class="partner"><h4>Traçabilité</h4><div class="small">Chaque dépôt est associé à un point, une catégorie et une date.</div></div>
+    </div></div>
+    <div class="card"><h3 class="section-title">Menu rapide</h3><div class="actions"><a class="btn primary" href="app.html">Déposer maintenant</a><a class="btn" href="collecte.html">Voir les points</a><a class="btn" href="partenaires.html">Utiliser son cashback</a><a class="btn" href="concours.html">Voir le concours</a><a class="btn" href="entreprises.html">Publier une demande</a><a class="btn gold" href="abonnement.html">Voir les abonnements</a></div></div>
+  </div></section>
+
+  <footer class="footer"><div class="container">Contact : <strong>contact@reloop-strasbourg.fr</strong> · Instagram : <strong>@reloop_strasbourg</strong><br>© ReLoop – Prototype étudiant (BUT) · Strasbourg</div></footer>
+  <script src="./assets/app.js"></script>
 </body>
 </html>
