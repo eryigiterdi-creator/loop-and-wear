@@ -1,426 +1,126 @@
-:root {
-  --bg: #f7f8fb;
-  --surface: #ffffff;
-  --surface-alt: #f1f4fa;
-  --text: #142033;
-  --muted: #67748a;
-  --line: #dce3ef;
-  --primary: #0f172a;
-  --accent: #1d4ed8;
-  --accent-soft: #dbeafe;
-  --success: #0f766e;
-  --radius: 22px;
-  --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+:root{
+  --bg:#f6fbf6;
+  --bg-alt:#eef7ef;
+  --text:#1f2b24;
+  --muted:#627067;
+  --primary:#2f7a4b;
+  --primary-dark:#215a37;
+  --secondary:#ffffff;
+  --border:#d8e6d9;
+  --card:#ffffff;
+  --shadow:0 18px 45px rgba(30,64,42,.08);
+  --radius:24px;
 }
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  color: var(--text);
-  background: var(--bg);
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:linear-gradient(180deg,#f8fcf7 0%,#eef7ef 100%);color:var(--text)}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+.container{width:min(1180px,calc(100% - 32px));margin:0 auto}
+.section{padding:84px 0;position:relative}
+.section.alt{background:rgba(255,255,255,.48)}
+.section-heading{margin-bottom:28px}
+.section-heading.center{text-align:center;max-width:760px;margin:0 auto 28px}
+.section-heading h2{font-size:clamp(2rem,4vw,3rem);margin:.35rem 0 .7rem}
+.section-heading p{color:var(--muted);line-height:1.65;margin:0}
+.eyebrow{display:inline-flex;padding:8px 12px;border-radius:999px;background:#e5f5e8;color:var(--primary-dark);font-size:.85rem;font-weight:700;letter-spacing:.02em}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(248,252,247,.84);backdrop-filter:blur(12px);border-bottom:1px solid rgba(216,230,217,.8)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:20px}
+.brand{display:flex;flex-direction:column}
+.brand-title{font-weight:800;font-size:1.35rem}
+.brand-city{font-size:.88rem;color:var(--muted)}
+.nav-links{display:flex;gap:18px;align-items:center}
+.nav-links a{color:var(--muted);font-weight:600}
+.nav-links a:hover{color:var(--primary)}
+.menu-toggle{display:none;border:none;background:#eaf6ec;border-radius:12px;padding:10px 12px}
+.hero{padding:92px 0 70px;position:relative;overflow:hidden}
+.hero-grid,.two-col,.collect-grid{display:grid;grid-template-columns:1.25fr .95fr;gap:28px;align-items:start}
+.hero h1{font-size:clamp(2.3rem,5vw,4.3rem);line-height:1.04;margin:16px 0}
+.hero-text{font-size:1.08rem;line-height:1.8;color:var(--muted);max-width:720px}
+.hero-actions,.campaign-actions,.bon-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.hero-badges span,.reward-tag,.tag,.status-chip,.impact-label{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:#edf7ee;color:var(--primary-dark);font-weight:700;font-size:.84rem}
+.btn{border:none;border-radius:14px;padding:14px 18px;font-weight:700;transition:.2s transform,.2s opacity,.2s background}
+.btn:hover{transform:translateY(-1px)}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-secondary{background:#fff;color:var(--primary-dark);border:1px solid var(--border)}
+.small-btn{padding:11px 14px}
+.dashboard-card,.deposit-card,.tracker-card,.leaderboard-card,.profile-card,.impact-card,.impact-highlight,.campaign-card,.reward-card,.contest-card,.partner-card,.faq-card,.wallet-banner{background:var(--card);border:1px solid rgba(216,230,217,.9);border-radius:var(--radius);box-shadow:var(--shadow)}
+.dashboard-card,.deposit-card,.tracker-card,.leaderboard-card,.profile-card,.impact-highlight,.wallet-banner{padding:24px}
+.dash-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #edf4ee}
+.dash-row:last-of-type{border-bottom:none}
+.live-panel{margin-top:18px;padding:16px;border-radius:18px;background:#edf7ee;color:var(--primary-dark);line-height:1.6}
+.steps-grid,.impact-grid,.campaign-grid,.reward-grid,.contest-grid,.faq-grid,.partner-grid{display:grid;gap:18px}
+.steps-grid{grid-template-columns:repeat(4,1fr)}
+.impact-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.impact-grid{grid-template-columns:repeat(2,1fr)}
+.impact-card{padding:24px}
+.impact-icon{font-size:1.6rem;margin-bottom:12px}
+.impact-card strong{display:block;font-size:1.6rem;margin-bottom:8px}
+.impact-card p,.impact-highlight p,.impact-highlight li{color:var(--muted);line-height:1.65}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.filter-btn{border:1px solid var(--border);background:#fff;border-radius:999px;padding:10px 14px;font-weight:700;color:var(--muted)}
+.filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.campaign-grid{grid-template-columns:repeat(2,1fr)}
+.campaign-card,.reward-card,.contest-card,.faq-card,.partner-card{padding:24px}
+.campaign-card ul,.notification-list,.history-list,.tracker-list,.leaderboard-list{padding-left:18px;color:var(--muted);line-height:1.7}
+.campaign-card.hidden{display:none}
+.campaign-meta{color:var(--muted);margin-top:-2px}
+.campaign-stats{display:flex;justify-content:space-between;gap:12px;padding-top:14px;margin-top:14px;border-top:1px solid #edf4ee;font-weight:700;color:var(--primary-dark)}
+.bon-header-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.bon-expiry,.label{color:var(--muted);font-size:.9rem}
+.bon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:18px 0}
+.bon-grid strong{display:block;margin-top:6px;font-size:1rem}
+.qr-wrap{display:flex;justify-content:center;padding:18px;border:1px dashed var(--border);border-radius:20px;background:#fbfefb}
+.tracker-list li{margin-bottom:10px}
+.tracker-note{color:var(--muted);line-height:1.7}
+.wallet-banner{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:18px}
+.wallet-banner strong{font-size:1.4rem}
+.wallet-label{display:block;color:var(--muted);margin-bottom:5px}
+.reward-grid{grid-template-columns:repeat(3,1fr)}
+.reward-card strong{display:block;font-size:1.5rem;margin:16px 0}
+.contest-grid{grid-template-columns:repeat(3,1fr)}
+.leaderboard-list{list-style:none;padding:0;margin:0}
+.leaderboard-list li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #edf4ee}
+.leaderboard-list li:last-child{border-bottom:none}
+.leaderboard-list .highlight{color:var(--primary-dark);font-weight:800}
+.profile-grid{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:18px}
+.profile-main{grid-column:span 1}
+.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.profile-stats div{padding:16px;border-radius:18px;background:#f7fbf7;border:1px solid #edf4ee}
+.profile-stats span{display:block;color:var(--muted);font-size:.9rem}
+.profile-stats strong{display:block;margin-top:6px;font-size:1.2rem}
+.badge-row{display:flex;flex-wrap:wrap;gap:10px}
+.badge-item{padding:10px 12px;border-radius:999px;background:#f2f5f2;color:#758077;font-weight:700}
+.badge-item.active{background:#edf7ee;color:var(--primary-dark)}
+.notification-list li,.history-list li{margin-bottom:12px}
+.map-cards{display:grid;gap:10px}
+.map-card{padding:14px 16px;border-radius:16px;border:1px solid var(--border);background:#fff;text-align:left;font-weight:700;color:var(--muted)}
+.map-card.active,.map-card:hover{background:#edf7ee;color:var(--primary-dark)}
+.map-box{min-height:420px;border-radius:28px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)}
+.partner-grid{grid-template-columns:repeat(4,1fr)}
+.faq-grid{grid-template-columns:repeat(2,1fr)}
+.step-card{background:#fff;border:1px solid var(--border);border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+.step-number{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#edf7ee;color:var(--primary-dark);font-weight:800;margin-bottom:14px}
+.page-decor{position:fixed;pointer-events:none;opacity:.18;z-index:0}
+.decor-leaf{width:140px;height:140px;background:radial-gradient(circle at 35% 35%,#71b88b 0%,#71b88b 25%,transparent 26%),radial-gradient(circle at 62% 62%,#9bd4aa 0%,#9bd4aa 25%,transparent 26%)}
+.decor-leaf-1{top:90px;left:-24px;transform:rotate(-18deg)}
+.decor-leaf-2{bottom:40px;right:-10px;transform:rotate(22deg)}
+.decor-flower{width:150px;height:150px;background:radial-gradient(circle,#e7a7b5 0 14%,transparent 15%),radial-gradient(circle at 24% 50%,#f4c4ce 0 16%,transparent 17%),radial-gradient(circle at 76% 50%,#f4c4ce 0 16%,transparent 17%),radial-gradient(circle at 50% 24%,#f4c4ce 0 16%,transparent 17%),radial-gradient(circle at 50% 76%,#f4c4ce 0 16%,transparent 17%)}
+.decor-flower-1{top:36%;left:2%}
+.decor-flower-2{top:62%;right:4%}
+.hero-ornament{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#d8efd9 0%,transparent 68%);z-index:-1}
+.hero-ornament-left{top:40px;left:-40px}.hero-ornament-right{bottom:-40px;right:0}
+@media (max-width: 1080px){
+  .steps-grid,.campaign-grid,.reward-grid,.contest-grid,.partner-grid,.profile-grid,.impact-layout,.hero-grid,.two-col,.collect-grid{grid-template-columns:1fr 1fr}
+  .reward-grid,.contest-grid,.partner-grid,.profile-grid{grid-template-columns:1fr 1fr}
 }
-
-a { color: inherit; text-decoration: none; }
-button { font: inherit; cursor: pointer; }
-
-.container {
-  width: min(1180px, calc(100% - 32px));
-  margin: 0 auto;
-}
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  backdrop-filter: blur(10px);
-  background: rgba(247, 248, 251, 0.88);
-  border-bottom: 1px solid rgba(220, 227, 239, 0.9);
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 78px;
-  gap: 20px;
-}
-
-.brand {
-  display: inline-flex;
-  flex-direction: column;
-  font-weight: 800;
-}
-.brand-title { font-size: 1.35rem; }
-.brand-city { color: var(--muted); font-size: 0.88rem; font-weight: 600; }
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-  font-size: 0.95rem;
-  color: var(--muted);
-}
-.nav-links a:hover { color: var(--text); }
-.menu-toggle {
-  display: none;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  border-radius: 12px;
-  padding: 10px 12px;
-}
-
-.hero { padding: 72px 0 28px; }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 26px;
-  align-items: stretch;
-}
-.eyebrow {
-  display: inline-block;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-.hero h1 {
-  font-size: clamp(2.2rem, 4.7vw, 4.1rem);
-  line-height: 1.05;
-  margin: 16px 0;
-}
-.hero-text {
-  font-size: 1.02rem;
-  line-height: 1.7;
-  color: var(--muted);
-  max-width: 62ch;
-}
-.hero-actions, .campaign-actions, .actions-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
-}
-.hero-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 22px;
-}
-.hero-badges span {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 10px 14px;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.dashboard-card,
-.step-card,
-.campaign-card,
-.bon-card,
-.reward-card,
-.mission-card,
-.leaderboard-card,
-.map-card,
-.info-box,
-.tracker-step {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-.dashboard-card { padding: 22px; display: grid; gap: 16px; }
-.dash-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--line);
-}
-.live-panel {
-  padding: 14px 16px;
-  background: var(--surface-alt);
-  border-radius: 16px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.section { padding: 34px 0 34px; }
-.section.alt { background: linear-gradient(180deg, transparent, rgba(219, 234, 254, 0.18)); }
-.section-heading { margin-bottom: 24px; }
-.section-heading.center { text-align: center; max-width: 760px; margin: 0 auto 24px; }
-.section-heading h2 { margin: 14px 0 10px; font-size: clamp(1.8rem, 3vw, 2.6rem); }
-.section-heading p { color: var(--muted); line-height: 1.7; }
-
-.steps-grid,
-.campaign-grid,
-.cashback-grid,
-.mission-grid {
-  display: grid;
-  gap: 18px;
-}
-.steps-grid { grid-template-columns: repeat(4, 1fr); }
-.step-card { padding: 22px; }
-.step-number {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: var(--primary);
-  color: white;
-  font-weight: 800;
-  margin-bottom: 16px;
-}
-.step-card p { color: var(--muted); line-height: 1.6; }
-
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-.filter-btn {
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--muted);
-  border-radius: 999px;
-  padding: 10px 14px;
-}
-.filter-btn.active {
-  background: var(--primary);
-  color: #fff;
-  border-color: var(--primary);
-}
-.campaign-grid { grid-template-columns: repeat(2, 1fr); }
-.campaign-card { padding: 22px; }
-.campaign-card.hidden { display: none; }
-.tag {
-  display: inline-block;
-  padding: 7px 10px;
-  background: var(--surface-alt);
-  color: var(--accent);
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-.campaign-card h3 { margin: 14px 0 8px; }
-.campaign-meta { color: var(--muted); margin: 0 0 12px; }
-.campaign-card ul { padding-left: 18px; color: var(--muted); line-height: 1.7; }
-.campaign-stats {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 14px 0 4px;
-  color: var(--text);
-  font-size: 0.93rem;
-  flex-wrap: wrap;
-}
-
-.btn {
-  border: 0;
-  border-radius: 14px;
-  padding: 13px 18px;
-  font-weight: 700;
-  transition: transform 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease;
-}
-.btn:hover:not(:disabled) { transform: translateY(-1px); }
-.btn:disabled { opacity: 0.55; cursor: not-allowed; }
-.btn-primary {
-  background: var(--primary);
-  color: white;
-  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.14);
-}
-.btn-secondary {
-  background: white;
-  color: var(--text);
-  border: 1px solid var(--line);
-}
-.small-btn { padding: 11px 14px; border-radius: 12px; }
-
-.bon-layout,
-.concours-layout,
-.collecte-layout {
-  display: grid;
-  gap: 22px;
-}
-.bon-layout { grid-template-columns: 1.08fr 0.92fr; align-items: start; }
-.big-tracker { grid-template-columns: repeat(3, 1fr); margin-top: 12px; }
-.tracker-step { padding: 18px; }
-.tracker-step span { color: var(--accent); font-weight: 700; font-size: 0.86rem; }
-.tracker-step p { color: var(--muted); line-height: 1.6; }
-.info-box {
-  padding: 16px 18px;
-  line-height: 1.7;
-  color: var(--muted);
-  margin-top: 16px;
-}
-.bon-card { padding: 22px; position: sticky; top: 98px; }
-.bon-top, .bon-details div {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-}
-.bon-chip {
-  background: var(--surface-alt);
-  color: var(--accent);
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 0.84rem;
-}
-.bon-expiry { color: var(--muted); font-size: 0.9rem; }
-.bon-subtitle, .bon-footer { color: var(--muted); line-height: 1.6; }
-.qr-wrap {
-  margin: 20px 0;
-  display: grid;
-  place-items: center;
-  min-height: 220px;
-  border: 1px dashed var(--line);
-  border-radius: 18px;
-  background: var(--surface-alt);
-}
-#qr-canvas {
-  background: white;
-  border-radius: 12px;
-  padding: 10px;
-}
-.bon-details {
-  display: grid;
-  gap: 12px;
-  margin-bottom: 14px;
-}
-.bon-details span { color: var(--muted); }
-
-.cashback-grid { grid-template-columns: repeat(3, 1fr); }
-.reward-card { padding: 22px; display: grid; gap: 12px; }
-.reward-card.featured { border-color: rgba(29, 78, 216, 0.35); }
-.reward-badge {
-  display: inline-flex;
-  width: fit-content;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  padding: 7px 10px;
-  font-weight: 700;
-  font-size: 0.8rem;
-}
-.reward-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-.wallet-box { margin-top: 20px; }
-
-.concours-layout { grid-template-columns: 1.05fr 0.95fr; align-items: start; }
-.mission-grid { grid-template-columns: repeat(3, 1fr); }
-.mission-card { padding: 20px; }
-.mission-card p { color: var(--muted); min-height: 54px; }
-.mission-card span { color: var(--accent); font-weight: 700; }
-.leaderboard-card { padding: 22px; }
-.leaderboard-card ol { list-style: none; padding: 0; margin: 18px 0 10px; display: grid; gap: 10px; }
-.leaderboard-card li {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 14px 16px;
-  border-radius: 16px;
-  background: var(--surface-alt);
-}
-.current-user {
-  border: 1px solid rgba(29, 78, 216, 0.25);
-  background: rgba(219, 234, 254, 0.4) !important;
-}
-.leaderboard-note { color: var(--muted); line-height: 1.6; }
-
-.collecte-layout { grid-template-columns: 1.15fr 0.85fr; }
-.map-panel {
-  min-height: 470px;
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-}
-.locations-list { display: grid; gap: 12px; }
-.map-card {
-  width: 100%;
-  text-align: left;
-  padding: 18px;
-}
-.map-card strong { display: block; margin-bottom: 6px; }
-.map-card span { color: var(--muted); }
-.map-card.active { border-color: rgba(29, 78, 216, 0.4); background: rgba(219, 234, 254, 0.22); }
-
-.partner-strip {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
-}
-.partner-strip span {
-  text-align: center;
-  padding: 16px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  font-weight: 700;
-}
-
-@media (max-width: 1080px) {
-  .hero-grid,
-  .bon-layout,
-  .concours-layout,
-  .collecte-layout,
-  .steps-grid,
-  .cashback-grid,
-  .mission-grid,
-  .campaign-grid,
-  .big-tracker,
-  .partner-strip {
-    grid-template-columns: 1fr 1fr;
-  }
-  .dashboard-card,
-  .bon-card,
-  .leaderboard-card { position: static; }
-}
-
-@media (max-width: 760px) {
-  .menu-toggle { display: inline-flex; }
-  .nav-links {
-    position: absolute;
-    left: 16px;
-    right: 16px;
-    top: 72px;
-    display: none;
-    flex-direction: column;
-    background: var(--surface);
-    padding: 16px;
-    border-radius: 18px;
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow);
-  }
-  .nav-links.open { display: flex; }
-  .hero-grid,
-  .bon-layout,
-  .concours-layout,
-  .collecte-layout,
-  .steps-grid,
-  .cashback-grid,
-  .mission-grid,
-  .campaign-grid,
-  .big-tracker,
-  .partner-strip {
-    grid-template-columns: 1fr;
-  }
-  .hero { padding-top: 42px; }
-  .section { padding: 28px 0; }
-  .map-panel { min-height: 360px; }
+@media (max-width: 760px){
+  .menu-toggle{display:block}
+  .nav-links{position:absolute;top:72px;left:16px;right:16px;background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:14px;display:none;flex-direction:column;align-items:flex-start}
+  .nav-links.open{display:flex}
+  .hero-grid,.two-col,.collect-grid,.steps-grid,.impact-grid,.impact-layout,.campaign-grid,.reward-grid,.contest-grid,.faq-grid,.partner-grid,.profile-grid,.bon-grid,.profile-stats{grid-template-columns:1fr}
+  .wallet-banner,.bon-header-row{flex-direction:column;align-items:flex-start}
 }

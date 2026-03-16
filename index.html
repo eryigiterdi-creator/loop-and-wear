@@ -12,6 +12,11 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="page-decor decor-leaf decor-leaf-1" aria-hidden="true"></div>
+  <div class="page-decor decor-leaf decor-leaf-2" aria-hidden="true"></div>
+  <div class="page-decor decor-flower decor-flower-1" aria-hidden="true"></div>
+  <div class="page-decor decor-flower decor-flower-2" aria-hidden="true"></div>
+
   <header class="site-header">
     <div class="container nav">
       <a href="#home" class="brand">
@@ -23,32 +28,36 @@
 
       <nav class="nav-links">
         <a href="#concept">Concept</a>
+        <a href="#impact">Impact</a>
         <a href="#demandes">Demandes</a>
-        <a href="#bons">Bons de dépôt</a>
+        <a href="#bons">Bons</a>
         <a href="#cashback">Cashback</a>
         <a href="#concours">Concours</a>
+        <a href="#profil">Profil</a>
         <a href="#collecte">Collecte</a>
-        <a href="#partenaires">Partenaires</a>
+        <a href="#faq">FAQ</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero" id="home">
+      <div class="hero-ornament hero-ornament-left" aria-hidden="true"></div>
+      <div class="hero-ornament hero-ornament-right" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div>
           <span class="eyebrow">Collecte textile ciblée</span>
-          <h1>Répondez aux besoins réels des entreprises et utilisez vos points dans l'app.</h1>
+          <h1>Répondez aux besoins réels des entreprises et transformez chaque dépôt en avantage concret.</h1>
           <p class="hero-text">
-            L'utilisateur choisit une demande active, crée un bon de dépôt avec QR code,
-            le fait scanner au point de collecte ou à la benne partenaire, puis reçoit ses points
-            après validation. Les points servent ensuite à activer des avantages concrets.
+            L’utilisateur sélectionne une demande active, génère un bon de dépôt avec QR code,
+            le fait scanner dans une benne ou un point partenaire, puis reçoit ses points après validation.
+            Les points servent ensuite à débloquer des réductions, des places, des boosts concours et des avantages abonnés.
           </p>
           <div class="hero-actions">
             <a href="#demandes" class="btn btn-primary">Créer un bon de dépôt</a>
-            <a href="#cashback" class="btn btn-secondary">Voir les récompenses</a>
+            <a href="#cashback" class="btn btn-secondary">Voir la boutique cashback</a>
           </div>
-          <div class="hero-badges">
+          <div class="hero-badges hero-badges-top">
             <span>Dépôts tracés</span>
             <span>QR code unique</span>
             <span>Cashback concret</span>
@@ -73,6 +82,10 @@
             <span>Score du mois</span>
             <strong><span id="leaderboard-points">820</span> pts</strong>
           </div>
+          <div class="dash-row">
+            <span>Niveau</span>
+            <strong id="user-level">Recyclage Bronze</strong>
+          </div>
           <div class="live-panel" id="live-feedback">
             Aucune action en cours. Crée un bon de dépôt pour démarrer le parcours.
           </div>
@@ -84,31 +97,58 @@
       <div class="container">
         <div class="section-heading center">
           <span class="eyebrow">Comment ça marche</span>
-          <h2>Un parcours clair du dépôt jusqu'au cashback</h2>
-          <p>Le bouton “Créer un bon de dépôt” ne réserve pas une place au hasard : il génère une preuve numérique liée à une demande précise, un lieu de collecte et une récompense estimée.</p>
+          <h2>Un parcours clair du dépôt jusqu’au cashback</h2>
+          <p>Le bouton “Créer un bon de dépôt” génère une preuve numérique liée à une demande précise, un lieu de collecte et une récompense estimée.</p>
         </div>
-
         <div class="steps-grid">
           <article class="step-card">
             <div class="step-number">1</div>
             <h3>Choisir une demande</h3>
-            <p>L'entreprise publie ce qu'elle veut vraiment recevoir : type de vêtement, état attendu, lieu de dépôt et points à gagner.</p>
+            <p>L’entreprise publie ce qu’elle veut vraiment recevoir : type de vêtement, état attendu, lieu de dépôt et points à gagner.</p>
           </article>
           <article class="step-card">
             <div class="step-number">2</div>
             <h3>Créer un bon avec QR code</h3>
-            <p>L'app génère un identifiant unique, un QR code, une date limite et un point de collecte précis.</p>
+            <p>L’app génère un identifiant unique, un QR code, une date limite et un point de collecte précis.</p>
           </article>
           <article class="step-card">
             <div class="step-number">3</div>
-            <h3>Scanner et vérifier</h3>
-            <p>Le QR code est scanné à la benne ou au comptoir partenaire. Le dépôt est ensuite contrôlé pour vérifier qu'il correspond bien à la demande.</p>
+            <h3>Scanner puis contrôler</h3>
+            <p>Le QR code est scanné à la benne ou au comptoir partenaire. Le dépôt est ensuite contrôlé pour vérifier qu’il correspond à la demande.</p>
           </article>
           <article class="step-card">
             <div class="step-number">4</div>
-            <h3>Recevoir puis utiliser les points</h3>
-            <p>Les points validés alimentent le portefeuille et servent à débloquer de vraies récompenses dans l'application.</p>
+            <h3>Utiliser les points</h3>
+            <p>Les points validés alimentent le portefeuille et servent à débloquer des récompenses dans l’application.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section eco-section" id="impact">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="eyebrow">Impact écologique</span>
+          <h2>Chaque dépôt validé a un effet visible</h2>
+          <p>Loop &amp; Wear montre aussi l’impact concret du réemploi, du recyclage et de la collecte ciblée sur le territoire.</p>
+        </div>
+        <div class="impact-layout">
+          <div class="impact-grid">
+            <article class="impact-card"><div class="impact-icon">♻️</div><strong>2 840 kg</strong><p>de textiles orientés vers le réemploi ou le recyclage matière ce mois-ci.</p></article>
+            <article class="impact-card"><div class="impact-icon">💧</div><strong>31 200 L</strong><p>d’eau économisés grâce au réemploi des pièces les plus demandées.</p></article>
+            <article class="impact-card"><div class="impact-icon">🌿</div><strong>420 kg CO₂e</strong><p>d’émissions évitées estimées par rapport à l’achat neuf.</p></article>
+            <article class="impact-card"><div class="impact-icon">🌳</div><strong>5 quartiers</strong><p>desservis par des bennes ou points partenaires pour réduire les trajets inutiles.</p></article>
+          </div>
+          <aside class="impact-highlight">
+            <span class="impact-label">Pourquoi c’est utile ?</span>
+            <h3>Un site plus crédible et plus vivant</h3>
+            <p>L’utilisateur ne dépose pas juste pour gagner des points : il participe à une boucle locale de réemploi, à des campagnes solidaires et à une baisse du gaspillage textile.</p>
+            <ul>
+              <li>Impact visible dépôt par dépôt</li>
+              <li>Compteurs écologiques mis à jour chaque mois</li>
+              <li>Univers visuel plus naturel avec fleurs, feuilles et teintes végétales</li>
+            </ul>
+          </aside>
         </div>
       </div>
     </section>
@@ -118,7 +158,7 @@
         <div class="section-heading">
           <span class="eyebrow">Demandes actives</span>
           <h2>Répondre à un besoin concret</h2>
-          <p>Chaque carte correspond à une demande métier. En cliquant, l'utilisateur crée un bon de dépôt rattaché à cette campagne.</p>
+          <p>Chaque carte correspond à une demande métier. En cliquant, l’utilisateur crée un bon de dépôt rattaché à cette campagne.</p>
         </div>
 
         <div class="filters">
@@ -139,13 +179,10 @@
               <li>Sans tache majeure, sans déchirure structurelle</li>
               <li>Point conseillé : Vétis · Esplanade</li>
             </ul>
-            <div class="campaign-stats">
-              <span>Objectif : 120 pièces</span>
-              <span>Récompense : 120 pts</span>
-            </div>
+            <div class="campaign-stats"><span>Objectif : 120 pièces</span><span>Récompense : 120 pts</span></div>
             <div class="campaign-actions">
-              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Denim en bon état" data-category="Réemploi" data-points="120" data-location="Vétis · Esplanade" data-usage="Bon seconde main ou ticket concours">Créer un bon de dépôt</button>
-              <button class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l'usage des points</button>
+              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Denim en bon état" data-category="Réemploi" data-points="120" data-location="Vétis · Esplanade">Créer un bon de dépôt</button>
+              <button class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l’usage des points</button>
             </div>
           </article>
 
@@ -155,54 +192,45 @@
             <p class="campaign-meta">Atelier de transformation textile</p>
             <ul>
               <li>Couleurs sobres de préférence</li>
-              <li>Textile propre, fermeture fonctionnelle</li>
-              <li>Point conseillé : Rivetoile</li>
+              <li>Textile propre, sans odeur</li>
+              <li>Point conseillé : Rivetoile · Point relais</li>
             </ul>
-            <div class="campaign-stats">
-              <span>Objectif : 80 pièces</span>
-              <span>Récompense : 90 pts</span>
-            </div>
+            <div class="campaign-stats"><span>Objectif : 80 pièces</span><span>Récompense : 95 pts</span></div>
             <div class="campaign-actions">
-              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Sweats unis et hoodies" data-category="Upcycling" data-points="90" data-location="Rivetoile" data-usage="Atelier créatif ou boost classement">Créer un bon de dépôt</button>
-              <button class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l'usage des points</button>
+              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Sweats unis et hoodies" data-category="Upcycling" data-points="95" data-location="Rivetoile · Point relais">Créer un bon de dépôt</button>
+              <button class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l’usage des points</button>
             </div>
           </article>
 
           <article class="campaign-card" data-category="solidaire">
             <span class="tag">Solidaire</span>
-            <h3>Manteaux hiver adulte</h3>
-            <p class="campaign-meta">Campagne d'utilité sociale</p>
+            <h3>Manteaux et vêtements chauds</h3>
+            <p class="campaign-meta">Campagne solidarité hiver</p>
             <ul>
-              <li>Manteaux, parkas, doudounes portables</li>
-              <li>Fermetures et boutons fonctionnels</li>
-              <li>Point conseillé : Gare centrale</li>
+              <li>Adulte homme/femme</li>
+              <li>État portable immédiatement</li>
+              <li>Point conseillé : Neudorf · Borne textile</li>
             </ul>
-            <div class="campaign-stats">
-              <span>Objectif : 60 pièces</span>
-              <span>Récompense : 140 pts</span>
-            </div>
+            <div class="campaign-stats"><span>Objectif : 60 pièces</span><span>Récompense : 140 pts</span></div>
             <div class="campaign-actions">
-              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Manteaux hiver adulte" data-category="Solidaire" data-points="140" data-location="Gare centrale" data-usage="Place de cinéma ou abonnement">Créer un bon de dépôt</button>
-              <button class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l'usage des points</button>
+              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Manteaux et vêtements chauds" data-category="Solidaire" data-points="140" data-location="Neudorf · Borne textile">Créer un bon de dépôt</button>
+              <button class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l’usage des points</button>
             </div>
           </article>
 
           <article class="campaign-card" data-category="matiere">
             <span class="tag">Matière</span>
-            <h3>Textiles abîmés pour recyclage</h3>
-            <p class="campaign-meta">Filière matière / tri</p>
+            <h3>Textiles abîmés tri matière</h3>
+            <p class="campaign-meta">Filière recyclage matière</p>
             <ul>
-              <li>Textiles non reportables acceptés</li>
-              <li>Secs, non souillés, triés en sac fermé</li>
-              <li>Point conseillé : Neudorf</li>
+              <li>Textiles propres mais non revendables</li>
+              <li>Coton et mélanges acceptés</li>
+              <li>Point conseillé : Gare centrale · Borne textile</li>
             </ul>
-            <div class="campaign-stats">
-              <span>Objectif : 200 kg</span>
-              <span>Récompense : 60 pts</span>
-            </div>
+            <div class="campaign-stats"><span>Objectif : 200 kg</span><span>Récompense : 70 pts</span></div>
             <div class="campaign-actions">
-              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Textiles abîmés pour recyclage" data-category="Matière" data-points="60" data-location="Neudorf" data-usage="Réduction partenaire ou mission concours">Créer un bon de dépôt</button>
-              <button class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l'usage des points</button>
+              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Textiles abîmés tri matière" data-category="Matière" data-points="70" data-location="Gare centrale · Borne textile">Créer un bon de dépôt</button>
+              <button class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l’usage des points</button>
             </div>
           </article>
         </div>
@@ -210,59 +238,55 @@
     </section>
 
     <section class="section" id="bons">
-      <div class="container bon-layout">
+      <div class="container two-col">
         <div>
           <div class="section-heading">
-            <span class="eyebrow">Bons de dépôt</span>
-            <h2>Un bon réellement exploitable dans l'interface</h2>
-            <p>Après création, le bon affiche son QR code, son code unique, le lieu de dépôt, la campagne choisie et le statut du parcours.</p>
+            <span class="eyebrow">Bon de dépôt</span>
+            <h2>Créer, scanner, vérifier, valider</h2>
+            <p>Le bon sert de preuve de traçabilité. Il contient le besoin, le lieu de dépôt, les points estimés et un QR code unique à montrer sur place.</p>
           </div>
 
-          <div class="tracker-grid big-tracker">
-            <article class="tracker-step">
-              <span>Étape 1</span>
-              <strong>Bon créé</strong>
-              <p id="tracker-code">Aucun bon généré.</p>
-            </article>
-            <article class="tracker-step">
-              <span>Étape 2</span>
-              <strong>Scanné à la collecte</strong>
-              <p id="tracker-scan">Aucun scan enregistré.</p>
-            </article>
-            <article class="tracker-step">
-              <span>Étape 3</span>
-              <strong>Contrôle & validation</strong>
-              <p id="tracker-validation">Aucune validation enregistrée.</p>
-            </article>
-          </div>
-
-          <div class="actions-bar">
-            <button class="btn btn-secondary" id="scan-btn" disabled>Simuler le scan à la benne / au point de collecte</button>
-            <button class="btn btn-primary" id="validate-btn" disabled>Valider le dépôt et créditer les points</button>
-          </div>
-
-          <div class="info-box" id="tracker-note">
-            Crée d'abord un bon. Ensuite, le QR code sert au scan du dépôt. Le point de collecte confirme la réception puis le contrôle déclenche les points.
+          <div class="deposit-card">
+            <div class="bon-header-row">
+              <span class="status-chip" id="bon-status-chip">Aucun bon</span>
+              <span class="bon-expiry" id="bon-expiry">Validité : —</span>
+            </div>
+            <h3 id="bon-title">Aucun bon actif</h3>
+            <p id="bon-subtitle">Choisis une demande ci-dessus pour générer un bon de dépôt.</p>
+            <div class="bon-grid">
+              <div>
+                <span class="label">Code</span>
+                <strong id="bon-code">—</strong>
+              </div>
+              <div>
+                <span class="label">Point de collecte</span>
+                <strong id="bon-location">—</strong>
+              </div>
+              <div>
+                <span class="label">Récompense estimée</span>
+                <strong id="bon-points">—</strong>
+              </div>
+              <div>
+                <span class="label">Statut</span>
+                <strong id="bon-status">En attente</strong>
+              </div>
+            </div>
+            <div class="qr-wrap"><canvas id="qr-canvas"></canvas></div>
+            <div class="bon-actions">
+              <button class="btn btn-primary" id="scan-btn">Scanner à la collecte</button>
+              <button class="btn btn-secondary" id="validate-btn">Valider le dépôt</button>
+            </div>
           </div>
         </div>
 
-        <aside class="bon-card">
-          <div class="bon-top">
-            <span class="bon-chip" id="bon-status-chip">Aucun bon</span>
-            <span class="bon-expiry" id="bon-expiry">Validité : —</span>
-          </div>
-          <h3 id="bon-title">Bon de dépôt Loop &amp; Wear</h3>
-          <p class="bon-subtitle" id="bon-subtitle">Choisissez une demande pour générer un bon exploitable.</p>
-          <div class="qr-wrap">
-            <canvas id="qr-canvas" width="190" height="190"></canvas>
-          </div>
-          <div class="bon-details">
-            <div><span>Code</span><strong id="bon-code">—</strong></div>
-            <div><span>Lieu</span><strong id="bon-location">—</strong></div>
-            <div><span>Récompense</span><strong id="bon-points">—</strong></div>
-            <div><span>Statut</span><strong id="bon-status">En attente</strong></div>
-          </div>
-          <div class="bon-footer">Le QR code est présenté à la benne connectée ou au point relais partenaire. Après scan et contrôle, l'app crédite automatiquement les points.</div>
+        <aside class="tracker-card">
+          <h3>Suivi du parcours</h3>
+          <ul class="tracker-list">
+            <li id="tracker-code">Aucun bon généré.</li>
+            <li id="tracker-scan">En attente du scan à la benne ou au point relais.</li>
+            <li id="tracker-validation">En attente du contrôle qualité et de la confirmation terrain.</li>
+          </ul>
+          <p class="tracker-note" id="tracker-note">Le client montre ce QR code à la benne connectée ou au point partenaire. Le scan déclenche l’enregistrement du dépôt.</p>
         </aside>
       </div>
     </section>
@@ -270,163 +294,157 @@
     <section class="section alt" id="cashback">
       <div class="container">
         <div class="section-heading">
-          <span class="eyebrow">Cashback & avantages</span>
-          <h2>Des récompenses plus attractives et vraiment utilisables</h2>
-          <p>Les points gagnés après validation deviennent une monnaie d'usage dans l'app. Chaque récompense a une utilité claire, un coût et un bouton d'activation.</p>
+          <span class="eyebrow">Boutique cashback</span>
+          <h2>Des récompenses attractives et directement utilisables</h2>
+          <p>Les points crédités après validation servent à débloquer des avantages concrets dans l’application.</p>
         </div>
-
-        <div class="cashback-grid">
-          <article class="reward-card featured">
-            <span class="reward-badge">Populaire</span>
-            <h3>1 place de cinéma</h3>
-            <p>Coupon dématérialisé à afficher dans l'app partenaire loisirs.</p>
-            <div class="reward-meta"><strong>150 pts</strong><span>Disponible immédiatement</span></div>
-            <button class="btn btn-primary small-btn redeem-btn" data-cost="150" data-reward="cinema">Activer</button>
-          </article>
-
-          <article class="reward-card">
-            <span class="reward-badge">Marque</span>
-            <h3>5 € de réduction chez Nike</h3>
-            <p>Coupon partenaire à usage unique, visible dans l'espace avantages.</p>
-            <div class="reward-meta"><strong>220 pts</strong><span>Débloque un code promo</span></div>
-            <button class="btn btn-primary small-btn redeem-btn" data-cost="220" data-reward="nike">Activer</button>
-          </article>
-
-          <article class="reward-card">
-            <span class="reward-badge">Premium</span>
-            <h3>1 mois Loop &amp; Wear Plus</h3>
-            <p>Accès prioritaire aux campagnes, alertes anticipées et bonus sur certaines collectes.</p>
-            <div class="reward-meta"><strong>180 pts</strong><span>Activation instantanée</span></div>
-            <button class="btn btn-primary small-btn redeem-btn" data-cost="180" data-reward="subscription">Activer</button>
-          </article>
-
-          <article class="reward-card">
-            <span class="reward-badge">Créatif</span>
-            <h3>Atelier upcycling</h3>
-            <p>Réservation d'une place à un atelier partenaire avec priorité de confirmation.</p>
-            <div class="reward-meta"><strong>240 pts</strong><span>1 place réservée</span></div>
-            <button class="btn btn-primary small-btn redeem-btn" data-cost="240" data-reward="atelier">Activer</button>
-          </article>
-
-          <article class="reward-card">
-            <span class="reward-badge">Bonus</span>
-            <h3>Booster concours</h3>
-            <p>Transforme les points en progression directe dans le concours mensuel.</p>
-            <div class="reward-meta"><strong>90 pts</strong><span>+50 pts concours</span></div>
-            <button class="btn btn-primary small-btn redeem-btn" data-cost="90" data-reward="contest">Activer</button>
-          </article>
-
-          <article class="reward-card">
-            <span class="reward-badge">Mode</span>
-            <h3>10 € sur friperie partenaire</h3>
-            <p>Bon visible dans l'app et utilisable lors d'un achat en boutique partenaire.</p>
-            <div class="reward-meta"><strong>300 pts</strong><span>Bon d'achat digital</span></div>
-            <button class="btn btn-primary small-btn redeem-btn" data-cost="300" data-reward="friperie">Activer</button>
-          </article>
+        <div class="wallet-banner">
+          <div>
+            <span class="wallet-label">Solde disponible</span>
+            <strong><span id="wallet-balance-big">280</span> pts</strong>
+          </div>
+          <div>
+            <span class="wallet-label">Dernière action</span>
+            <strong id="wallet-history">Aucune utilisation récente.</strong>
+          </div>
         </div>
-
-        <div class="info-box wallet-box" id="wallet-history">Dernière action : aucune récompense activée.</div>
+        <div class="reward-grid">
+          <article class="reward-card"><span class="reward-tag">Culture</span><h3>Place de cinéma</h3><p>1 ticket cinéma à activer directement dans l’espace avantages.</p><strong>500 pts</strong><button class="btn btn-primary redeem-btn" data-cost="500" data-reward="cinema">Utiliser</button></article>
+          <article class="reward-card"><span class="reward-tag">Mode</span><h3>5 € de réduction marque partenaire</h3><p>Coupon immédiat utilisable en caisse partenaire ou en e-code.</p><strong>900 pts</strong><button class="btn btn-primary redeem-btn" data-cost="900" data-reward="nike">Utiliser</button></article>
+          <article class="reward-card"><span class="reward-tag">Local</span><h3>Bon 10 € friperie partenaire</h3><p>Bon d’achat à utiliser chez une friperie du réseau local.</p><strong>1100 pts</strong><button class="btn btn-primary redeem-btn" data-cost="1100" data-reward="friperie">Utiliser</button></article>
+          <article class="reward-card"><span class="reward-tag">Atelier</span><h3>Atelier upcycling premium</h3><p>Réservation prioritaire pour un atelier créatif partenaire.</p><strong>700 pts</strong><button class="btn btn-primary redeem-btn" data-cost="700" data-reward="atelier">Utiliser</button></article>
+          <article class="reward-card"><span class="reward-tag">Abonnement</span><h3>Loop &amp; Wear Plus</h3><p>1 mois d’abonnement avec bonus points, offres exclusives et file rapide.</p><strong>650 pts</strong><button class="btn btn-primary redeem-btn" data-cost="650" data-reward="subscription">Activer</button></article>
+          <article class="reward-card"><span class="reward-tag">Concours</span><h3>Booster concours</h3><p>Ajoute immédiatement des points au classement mensuel.</p><strong>300 pts</strong><button class="btn btn-primary redeem-btn" data-cost="300" data-reward="contest">Booster</button></article>
+        </div>
       </div>
     </section>
 
     <section class="section" id="concours">
-      <div class="container concours-layout">
+      <div class="container two-col">
         <div>
           <div class="section-heading">
-            <span class="eyebrow">Concours mensuel</span>
-            <h2>Un classement plus fonctionnel et motivant</h2>
-            <p>Le concours transforme l'engagement en jeu : chaque dépôt validé rapporte des points concours, et certains cashback peuvent booster la progression.</p>
+            <span class="eyebrow">Concours du mois</span>
+            <h2>Un système plus attractif et plus fonctionnel</h2>
+            <p>Le concours récompense la régularité, la conformité des dépôts et l’engagement local. Les utilisateurs peuvent gagner des lots, des boosts et des avantages partenaires.</p>
           </div>
-
-          <div class="mission-grid">
-            <article class="mission-card">
-              <strong>Mission 1</strong>
-              <p>Valider 2 dépôts ce mois-ci</p>
-              <span>Bonus : +80 pts concours</span>
-            </article>
-            <article class="mission-card">
-              <strong>Mission 2</strong>
-              <p>Déposer dans 2 points de collecte différents</p>
-              <span>Bonus : +60 pts concours</span>
-            </article>
-            <article class="mission-card">
-              <strong>Mission 3</strong>
-              <p>Répondre à une campagne solidaire</p>
-              <span>Bonus : +100 pts concours</span>
-            </article>
+          <div class="contest-grid">
+            <article class="contest-card"><h3>Top 3 du mois</h3><p>1er : carte cadeau responsable · 2e : atelier premium · 3e : places cinéma.</p></article>
+            <article class="contest-card"><h3>Missions flash</h3><p>Bonus de points si un dépôt répond à une campagne urgente avant 72 h.</p></article>
+            <article class="contest-card"><h3>Défi campus</h3><p>Classement spécial étudiants et entreprises locales pour générer du trafic.</p></article>
           </div>
         </div>
-
         <aside class="leaderboard-card">
-          <h3>Classement Strasbourg</h3>
-          <ol>
-            <li><span>Lea M.</span><strong>1180 pts</strong></li>
-            <li><span>Yanis B.</span><strong>1110 pts</strong></li>
-            <li><span>Camille R.</span><strong>1020 pts</strong></li>
-            <li><span>Nora K.</span><strong>970 pts</strong></li>
-            <li class="current-user"><span>Vous</span><strong id="leaderboard-sidebar-points">820 pts</strong></li>
-          </ol>
-          <div class="leaderboard-note">Le top 3 remporte un bonus partenaire, un badge premium et une mise en avant dans l'app.</div>
+          <h3>Classement live</h3>
+          <ul class="leaderboard-list">
+            <li><span>#1 Zoé</span><strong>1180 pts</strong></li>
+            <li><span>#2 Karim</span><strong>1105 pts</strong></li>
+            <li><span>#3 Lina</span><strong>1030 pts</strong></li>
+            <li class="highlight"><span>Vous</span><strong id="leaderboard-sidebar-points">820 pts</strong></li>
+          </ul>
+          <p class="leaderboard-note">Chaque dépôt validé ajoute un bonus concours. Les boosters achetés dans la boutique cashback modifient aussi le classement.</p>
         </aside>
       </div>
     </section>
 
-    <section class="section alt" id="collecte">
+    <section class="section alt" id="profil">
       <div class="container">
         <div class="section-heading">
-          <span class="eyebrow">Points de collecte</span>
-          <h2>5 emplacements visibles avec carte</h2>
-          <p>L'utilisateur choisit son lieu de dépôt directement dans le bon. Les cartes ci-dessous recentrent la carte et donnent un accès rapide à l'adresse.</p>
+          <span class="eyebrow">Profil utilisateur</span>
+          <h2>Historique, badges, notifications et abonnement</h2>
+          <p>Cette section rend l’app plus réaliste et plus engageante au quotidien.</p>
         </div>
+        <div class="profile-grid">
+          <article class="profile-card profile-main">
+            <h3>Mon profil</h3>
+            <div class="profile-stats">
+              <div><span>Dépôts validés</span><strong id="validated-count">3</strong></div>
+              <div><span>Badges obtenus</span><strong id="badge-count">2</strong></div>
+              <div><span>Abonnement</span><strong id="subscription-status">Standard</strong></div>
+            </div>
+            <div class="badge-row" id="badge-row">
+              <span class="badge-item active">🌱 Premier dépôt</span>
+              <span class="badge-item active">♻️ Réemploi local</span>
+              <span class="badge-item">🏆 Top 10</span>
+              <span class="badge-item">💎 Plus</span>
+            </div>
+          </article>
 
-        <div class="collecte-layout">
-          <div class="map-panel" id="collecte-map"></div>
-          <div class="locations-list">
-            <button class="map-card active" data-lat="48.5839" data-lng="7.7673" data-name="Vétis · Esplanade" data-address="Esplanade, Strasbourg">
-              <strong>Vétis · Esplanade</strong>
-              <span>Collecte denim et vestes</span>
-            </button>
-            <button class="map-card" data-lat="48.5734" data-lng="7.7521" data-name="Rivetoile" data-address="Rivetoile, Strasbourg">
-              <strong>Rivetoile</strong>
-              <span>Sweats et textile casual</span>
-            </button>
-            <button class="map-card" data-lat="48.5854" data-lng="7.7348" data-name="Gare centrale" data-address="Gare de Strasbourg, Strasbourg">
-              <strong>Gare centrale</strong>
-              <span>Campagnes solidaires</span>
-            </button>
-            <button class="map-card" data-lat="48.5622" data-lng="7.7551" data-name="Neudorf" data-address="Neudorf, Strasbourg">
-              <strong>Neudorf</strong>
-              <span>Textiles à recycler</span>
-            </button>
-            <button class="map-card" data-lat="48.5909" data-lng="7.7413" data-name="Place des Halles" data-address="Place des Halles, Strasbourg">
-              <strong>Place des Halles</strong>
-              <span>Dépôts rapides centre-ville</span>
-            </button>
-          </div>
+          <article class="profile-card">
+            <h3>Notifications utiles</h3>
+            <ul class="notification-list" id="notification-list">
+              <li>Nouvelle campagne denim proche de votre point favori.</li>
+              <li>Votre bon actif expire dans 48 h.</li>
+              <li>Bonus concours disponible sur la mission campus.</li>
+            </ul>
+            <button class="btn btn-secondary" id="notif-btn">Recevoir une nouvelle alerte</button>
+          </article>
+
+          <article class="profile-card">
+            <h3>Historique des dépôts</h3>
+            <ul class="history-list" id="deposit-history">
+              <li><strong>LNW-18342</strong> · Denim en bon état · Validé · +120 pts</li>
+              <li><strong>LNW-17410</strong> · Manteaux hiver · Validé · +140 pts</li>
+              <li><strong>LNW-16982</strong> · Sweats unis · Validé · +95 pts</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="partenaires">
+    <section class="section" id="collecte">
+      <div class="container two-col collect-grid">
+        <div>
+          <div class="section-heading">
+            <span class="eyebrow">Points de collecte</span>
+            <h2>5 emplacements visibles sur la carte</h2>
+            <p>Le bon de dépôt est lié à un lieu concret pour rendre le parcours traçable et compréhensible.</p>
+          </div>
+          <div class="map-cards">
+            <button class="map-card active" data-lat="48.5844" data-lng="7.7652" data-name="Vétis · Esplanade" data-address="Esplanade, Strasbourg">Vétis · Esplanade</button>
+            <button class="map-card" data-lat="48.5734" data-lng="7.7521" data-name="Rivetoile · Point relais" data-address="Rivetoile, Strasbourg">Rivetoile · Point relais</button>
+            <button class="map-card" data-lat="48.5658" data-lng="7.7558" data-name="Neudorf · Borne textile" data-address="Neudorf, Strasbourg">Neudorf · Borne textile</button>
+            <button class="map-card" data-lat="48.5854" data-lng="7.7342" data-name="Gare centrale · Borne textile" data-address="Gare centrale, Strasbourg">Gare centrale · Borne textile</button>
+            <button class="map-card" data-lat="48.5917" data-lng="7.7689" data-name="Orangerie · Point partenaire" data-address="Orangerie, Strasbourg">Orangerie · Point partenaire</button>
+          </div>
+        </div>
+        <div id="collecte-map" class="map-box"></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="partenaires">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Réseau partenaire</span>
+          <h2>Des besoins publiés plus clairement</h2>
+          <p>Au lieu d’un simple logo, chaque partenaire peut publier un besoin précis et un objectif de collecte.</p>
+        </div>
+        <div class="partner-grid">
+          <article class="partner-card"><h3>Vétis</h3><p>Besoin publié : denim portable et vestes casual pour réemploi boutique.</p></article>
+          <article class="partner-card"><h3>Atelier upcycling</h3><p>Besoin publié : sweats unis, hoodies et tissus à transformer en nouvelles pièces.</p></article>
+          <article class="partner-card"><h3>Campagne solidaire</h3><p>Besoin publié : manteaux, pulls, vêtements chauds prêts à porter immédiatement.</p></article>
+          <article class="partner-card"><h3>Filière matière</h3><p>Besoin publié : textiles non revendables mais propres pour recyclage matière.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
       <div class="container">
         <div class="section-heading center">
-          <span class="eyebrow">Écosystème local</span>
-          <h2>Un projet présenté comme une vraie plateforme</h2>
-          <p>Loop &amp; Wear montre comment relier demandes entreprises, suivi des dépôts, validation terrain, portefeuille de points et animation concours dans une seule interface.</p>
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions qu’un jury ou un utilisateur peut se poser</h2>
         </div>
-        <div class="partner-strip">
-          <span>Vétis</span>
-          <span>Emmaüs Mundo</span>
-          <span>Le Relais Est</span>
-          <span>Horizon Amitié</span>
-          <span>Boutiques partenaires</span>
+        <div class="faq-grid">
+          <article class="faq-card"><h3>Pourquoi créer un bon de dépôt ?</h3><p>Pour lier un dépôt à une demande active, à un lieu précis et à un QR code traçable.</p></article>
+          <article class="faq-card"><h3>Quand les points sont-ils crédités ?</h3><p>Après le scan puis le contrôle de conformité du dépôt par le point de collecte ou le centre de tri.</p></article>
+          <article class="faq-card"><h3>Que faire si le dépôt n’est pas conforme ?</h3><p>Le bon reste enregistré mais la récompense peut être réduite ou refusée selon les règles de la campagne.</p></article>
+          <article class="faq-card"><h3>À quoi sert l’abonnement Plus ?</h3><p>À recevoir des offres exclusives, des bonus de points et un accès prioritaire à certaines campagnes.</p></article>
         </div>
       </div>
     </section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
