@@ -58,6 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const partnerLinkBtn = document.getElementById('partner-link-btn');
   const subscribePlanBtn = document.getElementById('subscribe-plan-btn');
   const cashbackResultBox = document.getElementById('cashback-result');
+  const rewardModal = document.getElementById('reward-modal');
+  const rewardModalTitle = document.getElementById('reward-modal-title');
+  const rewardModalText = document.getElementById('reward-modal-text');
+  const rewardModalCode = document.getElementById('reward-modal-code');
+  const rewardModalLink = document.getElementById('reward-modal-link');
+  const rewardModalCopy = document.getElementById('reward-modal-copy');
+  const rewardModalClose = document.getElementById('reward-modal-close');
+  const rewardModalBackdrop = document.getElementById('reward-modal-backdrop');
 
   let balance = 1280;
   let concoursPoints = 820;
@@ -127,6 +135,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  const openRewardModal = ({ title, text, code = '—', link = '' }) => {
+    if (rewardModalTitle) rewardModalTitle.textContent = title;
+    if (rewardModalText) rewardModalText.textContent = text;
+    if (rewardModalCode) rewardModalCode.textContent = code || '—';
+    if (rewardModalLink) {
+      if (link) {
+        rewardModalLink.href = link;
+        rewardModalLink.classList.remove('hidden');
+      } else {
+        rewardModalLink.href = '#';
+        rewardModalLink.classList.add('hidden');
+      }
+    }
+    if (rewardModal) {
+      rewardModal.classList.remove('hidden');
+      rewardModal.setAttribute('aria-hidden', 'false');
+    }
+  };
+
+  const closeRewardModal = () => {
+    if (rewardModal) {
+      rewardModal.classList.add('hidden');
+      rewardModal.setAttribute('aria-hidden', 'true');
+    }
+  };
 
   const getCurrentLevel = () => {
     let current = levelConfig[0];
@@ -438,6 +471,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
+      openRewardModal({
+        title: cashbackResultTitle?.textContent || 'Avantage activé',
+        text: cashbackResultText?.textContent || 'Le code est disponible.',
+        code: cashbackResultCode?.textContent || '—',
+        link: (partnerLinkBtn && !partnerLinkBtn.classList.contains('hidden')) ? partnerLinkBtn.href : ''
+      });
+
       estimateRank();
       refreshScoreboard();
       button.disabled = true;
@@ -446,9 +486,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateFeedback(`Récompense activée : ${action}. Les points ont été débités du portefeuille.`);
       flashCashbackBox();
 
-      if (link && (reward === 'cinema' || reward === 'nike' || reward === 'welcome')) {
-        window.open(link, '_blank', 'noopener');
-      }
     };
 
   redeemButtons.forEach((button) => {
@@ -475,6 +512,24 @@ document.addEventListener('DOMContentLoaded', () => {
       updateFeedback(`Code ${code} copié.`);
       updateWallet(`Code ${code} copié dans le presse-papiers.`);
       flashCashbackBox();
+    } catch (error) {
+      updateFeedback(`Code à copier manuellement : ${code}.`);
+    }
+  });
+
+  rewardModalClose?.addEventListener('click', closeRewardModal);
+  rewardModalBackdrop?.addEventListener('click', closeRewardModal);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeRewardModal();
+  });
+
+  rewardModalCopy?.addEventListener('click', async () => {
+    const code = rewardModalCode?.textContent?.trim();
+    if (!code || code === '—') return;
+    try {
+      if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(code);
+      updateFeedback(`Code ${code} copié.`);
+      updateWallet(`Code ${code} copié dans le presse-papiers.`);
     } catch (error) {
       updateFeedback(`Code à copier manuellement : ${code}.`);
     }

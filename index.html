@@ -630,5 +630,22 @@
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="script.js"></script>
+
+  <div class="reward-modal hidden" id="reward-modal" aria-hidden="true">
+    <div class="reward-modal-backdrop" id="reward-modal-backdrop"></div>
+    <div class="reward-modal-card" role="dialog" aria-modal="true" aria-labelledby="reward-modal-title">
+      <button type="button" class="reward-modal-close" id="reward-modal-close" aria-label="Fermer">×</button>
+      <span class="reward-tag">Avantage débloqué</span>
+      <h3 id="reward-modal-title">Code partenaire prêt</h3>
+      <p id="reward-modal-text">Le code s'affiche ici après activation.</p>
+      <div class="reward-modal-code" id="reward-modal-code">—</div>
+      <div class="reward-modal-actions">
+        <button type="button" class="btn btn-secondary" id="reward-modal-copy">Copier le code</button>
+        <a class="btn btn-primary hidden" id="reward-modal-link" href="#" target="_blank" rel="noopener">Ouvrir le site partenaire</a>
+      </div>
+      <p class="reward-modal-note">Le code reste aussi visible dans le bloc cashback de la page.</p>
+    </div>
+  </div>
+
 </body>
 </html>

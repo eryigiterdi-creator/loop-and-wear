@@ -213,3 +213,13 @@ button{font:inherit;cursor:pointer}
 .cashback-result.flash{animation:flashResult .7s ease;}
 @keyframes flashResult{0%{transform:scale(.98);box-shadow:0 0 0 rgba(0,0,0,0);}40%{transform:scale(1.01);box-shadow:0 18px 38px rgba(36,93,61,.16);}100%{transform:scale(1);box-shadow:0 12px 30px rgba(24,39,31,.06);}}
 @media (max-width:900px){.about-grid{grid-template-columns:1fr;}}
+
+
+.reward-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:9999;padding:24px}
+.reward-modal.hidden{display:none}
+.reward-modal-backdrop{position:absolute;inset:0;background:rgba(17,24,39,.48);backdrop-filter:blur(3px)}
+.reward-modal-card{position:relative;z-index:1;width:min(520px,100%);background:#fff;border-radius:24px;padding:28px;box-shadow:0 30px 70px rgba(0,0,0,.18);border:1px solid #dbe7dc}
+.reward-modal-close{position:absolute;top:14px;right:14px;width:42px;height:42px;border:none;border-radius:999px;background:#eef4ee;font-size:28px;cursor:pointer;color:#1f2937}
+.reward-modal-code{margin:18px 0;padding:18px 20px;border-radius:18px;background:#f4faf4;border:1px dashed #2f8f52;font-size:28px;font-weight:800;letter-spacing:1.2px;text-align:center;color:#14532d}
+.reward-modal-actions{display:flex;gap:12px;flex-wrap:wrap}
+.reward-modal-note{margin-top:14px;color:#5b6b60;font-size:14px}
