@@ -3,55 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReLoop – Espace entreprises</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <title>ReLoop – Entreprises</title>
+  <link rel="stylesheet" href="./assets/styles.css">
 </head>
 <body>
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="index.html"><div class="logo">RL</div><div class="brand-text"><h1>ReLoop</h1><p>Collecte textile à la demande • Strasbourg</p></div></a>
-      <nav class="nav-links">
-        <a data-nav href="index.html">Accueil</a>
-        <a data-nav href="entreprises.html">Entreprises</a>
-        <a data-nav href="collecte.html">Points</a>
-        <a data-nav href="impact.html">Impact</a>
-        <a data-nav href="faq.html">FAQ</a>
-        <a data-nav href="app.html">App</a>
+      <a class="brand" href="index.html">
+        <div class="logo">RL</div>
+        <div>
+          <h1>ReLoop</h1>
+          <p>Collecte textile à la demande • Strasbourg</p>
+        </div>
+      </a>
+
+      <nav class="menu">
+        <a href="index.html">Accueil</a>
+        <a href="entreprises.html">Entreprises</a>
+        <a href="collecte.html">Points</a>
+        <a href="impact.html">Impact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="app.html">App</a>
       </nav>
     </div>
   </header>
-  <main class="container hero">
-    <section class="card">
-      <h2 style="font-size:2.5rem;margin:0 0 12px">Espace entreprises</h2>
-      <p class="lead">La logique ReLoop : les entreprises expriment un besoin matière, les points de collecte se dimensionnent selon la demande et le reporting suit les volumes livrables.</p>
-      <div class="inline-kpi">
-        <span class="tag">CRM simplifié</span>
-        <span class="tag">Matching offre / besoin</span>
-        <span class="tag">Pilotage mensuel</span>
-      </div>
-    </section>
 
-    <section class="section enterprise-grid">
-      <article class="card">
-        <h3 class="section-title">Demandes actives</h3>
-        <div id="enterprise-list"></div>
-      </article>
-      <article class="card">
-        <h3 class="section-title">Ajouter un besoin</h3>
-        <form id="enterprise-form">
-          <div class="form-grid">
-            <div class="full"><label class="small muted">Entreprise</label><input class="input" type="text" name="name" required placeholder="Ex. Atelier ReTex"></div>
-            <div><label class="small muted">Zone</label><input class="input" type="text" name="zone" required placeholder="Strasbourg sud"></div>
-            <div><label class="small muted">Besoin kg / mois</label><input class="input" type="number" min="10" name="needKg" required placeholder="150"></div>
-            <div class="full"><label class="small muted">Type de textile</label><input class="input" type="text" name="material" required placeholder="coton, denim, mix textile..."></div>
-          </div>
-          <div class="row" style="margin-top:16px"><button class="btn primary" type="submit">Ajouter à la démo</button></div>
-        </form>
-        <div id="enterprise-result"></div>
-      </article>
-    </section>
+  <main class="section hero">
+    <div class="container">
+      <div class="card">
+        <h2 style="margin-top:0;">Entreprises demandeuses</h2>
+        <p class="muted">
+          Exemples d’entreprises et d’acteurs pouvant demander des flux textiles triés localement.
+        </p>
+      </div>
+    </div>
   </main>
-  <footer class="footer"><div class="container footer-inner"><p>Contact : <strong>contact@reloop-strasbourg.fr</strong> • Instagram : <strong>@reloop_strasbourg</strong></p><p>© ReLoop – Prototype étudiant (BUT) • Strasbourg</p></div></footer>
-  <script src="assets/app.js"></script>
+
+  <section class="section">
+    <div class="container">
+      <div class="card">
+        <h3 class="section-title">Demandes en cours</h3>
+        <div id="entreprises-list" class="list"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="card">
+        <h3 class="section-title">Pourquoi elles utilisent ReLoop</h3>
+        <div class="list">
+          <div class="partner">
+            <h4>Approvisionnement local</h4>
+            <div class="small">Réduction des coûts logistiques et meilleure réactivité.</div>
+          </div>
+          <div class="partner">
+            <h4>Traçabilité</h4>
+            <div class="small">Suivi par point de collecte, catégorie et volume collecté.</div>
+          </div>
+          <div class="partner">
+            <h4>Reporting ESG</h4>
+            <div class="small">Indicateurs de réemploi, collecte et valorisation matière.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="section-title">Profils types</h3>
+        <div class="list">
+          <div class="persona">
+            <h4>Atelier upcycling</h4>
+            <div class="small">Cherche du jean, des vestes et des pièces robustes.</div>
+          </div>
+          <div class="persona">
+            <h4>Marque responsable</h4>
+            <div class="small">Veut du textile trié, local et documenté.</div>
+          </div>
+          <div class="persona">
+            <h4>Association / insertion</h4>
+            <div class="small">Valorise les dons et redistribue selon les besoins.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      Contact : <strong>contact@reloop-strasbourg.fr</strong> · Instagram : <strong>@reloop_strasbourg</strong><br>
+      © ReLoop – Prototype étudiant (BUT) · Strasbourg
+    </div>
+  </footer>
+
+  <script src="./assets/app.js"></script>
 </body>
 </html>
