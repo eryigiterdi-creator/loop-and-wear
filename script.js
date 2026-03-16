@@ -317,5 +317,24 @@ document.addEventListener('DOMContentLoaded', () => {
     pointsData.forEach(([label, lat, lng]) => L.marker([lat, lng]).addTo(map).bindPopup(label));
   }
 
+
+  const reviewBtn = $('review-btn');
+  if (reviewBtn) {
+    reviewBtn.addEventListener('click', () => {
+      const name = ($('review-name').value || 'Utilisateur').trim();
+      const rating = ($('review-rating').value || '5/5').trim();
+      const message = ($('review-message').value || 'Très bonne expérience de dépôt avec Loop & Wear.').trim();
+      const reviewList = $('review-list');
+      const item = document.createElement('article');
+      item.className = 'review-item';
+      item.innerHTML = `<div class="review-top"><strong>${name}</strong><span>${rating}</span></div><p>“${message}”</p>`;
+      reviewList.prepend(item);
+      $('review-feedback').textContent = 'Merci, votre avis a bien été ajouté à la communauté.';
+      $('review-name').value = '';
+      $('review-rating').value = '';
+      $('review-message').value = '';
+      setLive('Un nouvel avis a été publié sur la plateforme.');
+    });
+  }
   renderStats();
 });
