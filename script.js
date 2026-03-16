@@ -51,6 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const levelChip = document.getElementById('level-chip');
   const levelPerks = document.getElementById('level-perks');
   const roadmapSteps = document.querySelectorAll('.level-step');
+  const cashbackResultTitle = document.getElementById('cashback-result-title');
+  const cashbackResultText = document.getElementById('cashback-result-text');
+  const cashbackResultCode = document.getElementById('cashback-result-code');
+  const copyCodeBtn = document.getElementById('copy-code-btn');
+  const partnerLinkBtn = document.getElementById('partner-link-btn');
+  const subscribePlanBtn = document.getElementById('subscribe-plan-btn');
 
   let balance = 280;
   let concoursPoints = 820;
@@ -95,6 +101,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateWallet = (message) => {
     if (walletHistory) walletHistory.textContent = message;
   };
+
+  const setCashbackResult = ({ title, text, code = '—', link = '' }) => {
+    if (cashbackResultTitle) cashbackResultTitle.textContent = title;
+    if (cashbackResultText) cashbackResultText.textContent = text;
+    if (cashbackResultCode) cashbackResultCode.textContent = code || '—';
+
+    if (partnerLinkBtn) {
+      if (link) {
+        partnerLinkBtn.href = link;
+        partnerLinkBtn.classList.remove('hidden');
+      } else {
+        partnerLinkBtn.href = '#';
+        partnerLinkBtn.classList.add('hidden');
+      }
+    }
+  };
+
 
   const getCurrentLevel = () => {
     let current = levelConfig[0];
@@ -321,6 +344,8 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', () => {
       const cost = Number(button.dataset.cost || 0);
       const reward = button.dataset.reward;
+      const code = button.dataset.code || '';
+      const link = button.dataset.link || '';
 
       if (balance < cost) {
         updateFeedback(`Solde insuffisant : il manque ${cost - balance} points pour cet avantage.`);
@@ -333,16 +358,56 @@ document.addEventListener('DOMContentLoaded', () => {
       if (reward === 'contest') {
         concoursPoints += 50;
         action = 'Booster concours activé, +50 pts concours ajoutés';
+        setCashbackResult({
+          title: 'Booster concours activé',
+          text: 'Le bonus concours est appliqué immédiatement dans le classement mensuel.',
+          code: 'BOOST+50'
+        });
       }
       if (reward === 'subscription') {
         action = 'Loop & Wear Plus activé pour 1 mois';
         subscriptionActive = true;
         unlockBadge(3);
+        setCashbackResult({
+          title: 'Loop & Wear Plus activé',
+          text: 'L’abonnement est maintenant actif sur le compte pour 1 mois.',
+          code: 'PLUS-1MOIS'
+        });
       }
-      if (reward === 'cinema') action = 'Place de cinéma ajoutée dans l’espace avantages';
-      if (reward === 'nike') action = 'Coupon 5 € marque partenaire débloqué';
-      if (reward === 'atelier') action = 'Atelier upcycling premium réservé';
-      if (reward === 'friperie') action = 'Bon 10 € friperie partenaire ajouté au portefeuille';
+      if (reward === 'cinema') {
+        action = 'Place de cinéma débloquée';
+        setCashbackResult({
+          title: 'Place de cinéma débloquée',
+          text: 'Le code promo est affiché ci-dessous et le bouton permet aussi d’ouvrir le site du partenaire.',
+          code: code || 'LOOPCINE26',
+          link
+        });
+      }
+      if (reward === 'nike') {
+        action = 'Coupon 5 € Nike débloqué';
+        setCashbackResult({
+          title: 'Réduction Nike débloquée',
+          text: 'Le code promo est prêt à être copié. Le site officiel Nike France peut aussi être ouvert directement.',
+          code: code || 'RECYCL22',
+          link
+        });
+      }
+      if (reward === 'atelier') {
+        action = 'Atelier upcycling premium réservé';
+        setCashbackResult({
+          title: 'Atelier upcycling réservé',
+          text: 'Présente ce code au partenaire ou ajoute-le dans le formulaire de réservation.',
+          code: code || 'UPCYCLE26'
+        });
+      }
+      if (reward === 'friperie') {
+        action = 'Bon 10 € friperie partenaire ajouté au portefeuille';
+        setCashbackResult({
+          title: 'Bon friperie disponible',
+          text: 'Le bon d’achat reste visible dans l’espace avantages et peut être utilisé en caisse partenaire.',
+          code: code || 'FRIP-LOOP10'
+        });
+      }
 
       estimateRank();
       refreshScoreboard();
@@ -350,7 +415,47 @@ document.addEventListener('DOMContentLoaded', () => {
       button.textContent = 'Activé';
       updateWallet(action + '.');
       updateFeedback(`Récompense activée : ${action}. Les points ont été débités du portefeuille.`);
+
+      if (link && (reward === 'cinema' || reward === 'nike')) {
+        window.open(link, '_blank', 'noopener');
+      }
     });
+  });
+
+  copyCodeBtn?.addEventListener('click', async () => {
+    const code = cashbackResultCode?.textContent?.trim();
+    if (!code || code === '—') {
+      updateFeedback('Aucun code promo à copier pour le moment.');
+      return;
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(code);
+      }
+      updateFeedback(`Code ${code} copié.`);
+      updateWallet(`Code ${code} copié dans le presse-papiers.`);
+    } catch (error) {
+      updateFeedback(`Code à copier manuellement : ${code}.`);
+    }
+  });
+
+  subscribePlanBtn?.addEventListener('click', () => {
+    if (subscriptionActive) {
+      updateFeedback('L’abonnement Plus est déjà actif sur ce compte.');
+      return;
+    }
+    subscriptionActive = true;
+    unlockBadge(3);
+    refreshScoreboard();
+    setCashbackResult({
+      title: 'Loop & Wear Plus activé',
+      text: 'L’abonnement a été activé depuis l’onglet dédié.',
+      code: 'PLUS-1MOIS'
+    });
+    updateWallet('Abonnement Loop & Wear Plus activé depuis l’onglet dédié.');
+    updateFeedback('Abonnement Plus activé : bonus, offres exclusives et accès prioritaire débloqués.');
+    document.querySelector('#profil')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   notifBtn?.addEventListener('click', () => {
@@ -388,18 +493,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   refreshScoreboard();
 });
-
-
-  const subscribePlanBtn = document.getElementById("subscribe-plan-btn");
-  subscribePlanBtn?.addEventListener("click", () => {
-    if (subscriptionActive) {
-      updateFeedback("L’abonnement Plus est déjà actif sur ce compte.");
-      return;
-    }
-    subscriptionActive = true;
-    unlockBadge(3);
-    refreshScoreboard();
-    updateWallet("Abonnement Loop & Wear Plus activé depuis l’onglet dédié.");
-    updateFeedback("Abonnement Plus activé : bonus, offres exclusives et accès prioritaire débloqués.");
-    document.querySelector("#profil")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
