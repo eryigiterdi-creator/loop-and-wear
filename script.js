@@ -42,6 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const bonStatus = document.getElementById('bon-status');
   const qrCanvas = document.getElementById('qr-canvas');
 
+  const levelCurrentPoints = document.getElementById('level-current-points');
+  const levelNextTarget = document.getElementById('level-next-target');
+  const levelProgressFill = document.getElementById('level-progress-fill');
+  const profileLevelTitle = document.getElementById('profile-level-title');
+  const profileLevelProgressFill = document.getElementById('profile-level-progress-fill');
+  const levelHelper = document.getElementById('level-helper');
+  const levelChip = document.getElementById('level-chip');
+  const levelPerks = document.getElementById('level-perks');
+  const roadmapSteps = document.querySelectorAll('.level-step');
+
   let balance = 280;
   let concoursPoints = 820;
   let rank = 12;
@@ -49,13 +59,29 @@ document.addEventListener('DOMContentLoaded', () => {
   let unlockedBadges = 2;
   let activeDeposit = null;
   let qr = null;
+  let subscriptionActive = false;
+
+  const levelConfig = [
+    { min: 0, title: 'Niveau 1 · Départ textile', perks: ['Découverte des demandes', 'Suivi du premier bon', 'Accès aux points de base'] },
+    { min: 60, title: 'Niveau 2 · Tri débutant', perks: ['+1% bonus dépôt', 'Alerte campagne locale', 'Historique simplifié'] },
+    { min: 140, title: 'Niveau 3 · Apporteur utile', perks: ['+2% bonus dépôt', '1 mission flash / mois', 'Badge profil visible'] },
+    { min: 240, title: 'Niveau 4 · Collecteur local', perks: ['+3% bonus dépôt', '1 mission flash / semaine', 'Badge visible au classement'] },
+    { min: 360, title: 'Niveau 5 · Trieur fiable', perks: ['+4% bonus dépôt', 'Accès aux drops premium', 'Priorité atelier local'] },
+    { min: 500, title: 'Niveau 6 · Booster campus', perks: ['+5% bonus dépôt', '1 booster concours réduit', 'Challenge campus débloqué'] },
+    { min: 660, title: 'Niveau 7 · Acteur circulaire', perks: ['+6% bonus dépôt', 'Récompenses exclusives', 'Stats d’impact détaillées'] },
+    { min: 840, title: 'Niveau 8 · Ambassadeur textile', perks: ['+7% bonus dépôt', 'Badge doré concours', 'File rapide sur campagnes urgentes'] },
+    { min: 1040, title: 'Niveau 9 · Leader quartier', perks: ['+8% bonus dépôt', '1 lot surprise / mois', 'Visibilité renforcée au classement'] },
+    { min: 1260, title: 'Niveau 10 · Capitaine collecte', perks: ['+10% bonus dépôt', 'Ticket concours mensuel offert', 'Accès beta aux nouvelles missions'] },
+    { min: 1500, title: 'Niveau 11 · Expert réemploi', perks: ['+12% bonus dépôt', 'Réductions premium', 'Statut expert sur le profil'] },
+    { min: 1760, title: 'Niveau 12 · Maître Loop & Wear', perks: ['+15% bonus dépôt', 'Récompenses VIP', 'Top profil sur la saison'] }
+  ];
 
   const notificationsPool = [
     'Nouvelle campagne manteaux publiée près de Rivetoile.',
     'Votre bonus campus est disponible pendant 24 h.',
     'Une benne proche accepte maintenant le denim en bon état.',
     'Une mission flash vous donne +30 pts concours sur les sweats.',
-    'Votre profil approche du niveau Recyclage Argent.'
+    'Un nouveau palier de niveau est presque atteint.'
   ];
 
   if (window.QRious && qrCanvas) {
@@ -70,11 +96,53 @@ document.addEventListener('DOMContentLoaded', () => {
     if (walletHistory) walletHistory.textContent = message;
   };
 
+  const getCurrentLevel = () => {
+    let current = levelConfig[0];
+    let next = null;
+    levelConfig.forEach((level, index) => {
+      if (balance >= level.min) {
+        current = level;
+        next = levelConfig[index + 1] || null;
+      }
+    });
+    return { current, next, index: levelConfig.findIndex((level) => level.min === current.min) };
+  };
+
   const updateLevel = () => {
-    let level = 'Recyclage Bronze';
-    if (validatedDeposits >= 7) level = 'Recyclage Or';
-    else if (validatedDeposits >= 5) level = 'Recyclage Argent';
-    userLevel.textContent = level;
+    const { current, next, index } = getCurrentLevel();
+    const start = current.min;
+    const end = next ? next.min : current.min + 240;
+    const progress = next ? ((balance - start) / (end - start)) * 100 : 100;
+    const nextLabel = next ? `Prochain palier : ${next.min} XP` : 'Palier max atteint';
+
+    userLevel.textContent = current.title;
+    if (profileLevelTitle) profileLevelTitle.textContent = current.title;
+    if (levelCurrentPoints) levelCurrentPoints.textContent = `${balance} XP`;
+    if (levelNextTarget) levelNextTarget.textContent = nextLabel;
+    if (levelChip) levelChip.textContent = `${balance} XP`;
+    if (levelProgressFill) levelProgressFill.style.width = `${Math.max(6, Math.min(100, progress))}%`;
+    if (profileLevelProgressFill) profileLevelProgressFill.style.width = `${Math.max(6, Math.min(100, progress))}%`;
+
+    if (levelHelper) {
+      levelHelper.textContent = next
+        ? `Encore ${Math.max(0, next.min - balance)} XP pour atteindre ${next.title}.`
+        : 'Tu as atteint le plus haut niveau de progression actuellement disponible.';
+    }
+
+    if (levelPerks) {
+      levelPerks.innerHTML = '';
+      current.perks.forEach((perk) => {
+        const span = document.createElement('span');
+        span.textContent = perk;
+        levelPerks.appendChild(span);
+      });
+    }
+
+    roadmapSteps.forEach((step, stepIndex) => {
+      step.classList.remove('active', 'current');
+      if (stepIndex < index) step.classList.add('active');
+      if (stepIndex === index) step.classList.add('current');
+    });
   };
 
   const refreshScoreboard = () => {
@@ -85,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     leaderboardRank.textContent = rank;
     validatedCount.textContent = validatedDeposits;
     badgeCount.textContent = unlockedBadges;
+    subscriptionStatus.textContent = subscriptionActive ? 'Plus' : 'Standard';
     updateLevel();
   };
 
@@ -267,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (reward === 'subscription') {
         action = 'Loop & Wear Plus activé pour 1 mois';
-        subscriptionStatus.textContent = 'Plus';
+        subscriptionActive = true;
         unlockBadge(3);
       }
       if (reward === 'cinema') action = 'Place de cinéma ajoutée dans l’espace avantages';

@@ -124,3 +124,24 @@ button{font:inherit;cursor:pointer}
   .hero-grid,.two-col,.collect-grid,.steps-grid,.impact-grid,.impact-layout,.campaign-grid,.reward-grid,.contest-grid,.faq-grid,.partner-grid,.profile-grid,.bon-grid,.profile-stats{grid-template-columns:1fr}
   .wallet-banner,.bon-header-row{flex-direction:column;align-items:flex-start}
 }
+
+.level-mini{margin-top:12px;padding:14px 16px;border-radius:18px;background:#f7fbf7;border:1px solid #edf4ee}
+.level-mini-top,.level-card-top,.levels-panel-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.level-progress{height:10px;border-radius:999px;background:#e7efe8;overflow:hidden;margin-top:10px}
+.level-progress.large{height:12px;margin-top:14px}
+.level-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#3f8f63,#78ba91);border-radius:999px;transition:width .35s ease}
+.level-card{margin:18px 0;padding:18px;border-radius:22px;background:#f9fcf9;border:1px solid #edf4ee}
+.level-label{display:block;color:var(--muted);font-size:.9rem;margin-bottom:4px}
+.level-chip{padding:10px 14px;border-radius:999px;background:#edf7ee;color:var(--primary-dark);font-weight:800}
+.level-helper{margin:12px 0 0;color:var(--muted);line-height:1.6}
+.level-perks{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.level-perks span{padding:10px 12px;border-radius:999px;background:#fff;border:1px solid #e3ece5;color:var(--primary-dark);font-weight:700;font-size:.92rem}
+.levels-panel{margin-bottom:18px;padding:18px;border-radius:22px;background:#fff;border:1px solid #edf4ee}
+.levels-panel-head h4{margin:0}
+.levels-panel-head span{color:var(--muted);font-size:.92rem}
+.levels-roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.level-step{padding:12px;border-radius:18px;border:1px solid #e7efe8;background:#f8faf8;color:#7a857c;text-align:center}
+.level-step strong{display:block;color:#5f6a61;margin-bottom:4px}
+.level-step.active{background:#edf7ee;border-color:#cfe5d3;color:var(--primary-dark)}
+.level-step.current{background:linear-gradient(180deg,#dff2e4,#edf7ee);border-color:#9fcca9;color:var(--primary-dark);box-shadow:0 10px 20px rgba(66,123,85,.08)}
+@media (max-width:760px){.levels-roadmap{grid-template-columns:repeat(2,1fr)}}
