@@ -57,8 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyCodeBtn = document.getElementById('copy-code-btn');
   const partnerLinkBtn = document.getElementById('partner-link-btn');
   const subscribePlanBtn = document.getElementById('subscribe-plan-btn');
+  const cashbackResultBox = document.getElementById('cashback-result');
 
-  let balance = 280;
+  let balance = 1280;
   let concoursPoints = 820;
   let rank = 12;
   let validatedDeposits = 3;
@@ -100,6 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const updateWallet = (message) => {
     if (walletHistory) walletHistory.textContent = message;
+  };
+
+  const flashCashbackBox = () => {
+    if (!cashbackResultBox) return;
+    cashbackResultBox.classList.remove('flash');
+    void cashbackResultBox.offsetWidth;
+    cashbackResultBox.classList.add('flash');
+    cashbackResultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
   const setCashbackResult = ({ title, text, code = '—', link = '' }) => {
@@ -340,15 +349,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  redeemButtons.forEach((button) => {
-    button.addEventListener('click', () => {
+  const handleRedeem = (button) => {
       const cost = Number(button.dataset.cost || 0);
       const reward = button.dataset.reward;
       const code = button.dataset.code || '';
       const link = button.dataset.link || '';
 
+      if (button.disabled) {
+        updateFeedback('Cet avantage a déjà été activé sur cette démonstration.');
+        flashCashbackBox();
+        return;
+      }
+
       if (balance < cost) {
+        setCashbackResult({
+          title: 'Solde insuffisant',
+          text: `Il manque ${cost - balance} points pour débloquer cet avantage. Dépose un nouveau lot ou active un bonus concours.`,
+          code: '—'
+        });
         updateFeedback(`Solde insuffisant : il manque ${cost - balance} points pour cet avantage.`);
+        flashCashbackBox();
         return;
       }
 
@@ -408,6 +428,15 @@ document.addEventListener('DOMContentLoaded', () => {
           code: code || 'FRIP-LOOP10'
         });
       }
+      if (reward === 'welcome') {
+        action = 'Code bienvenue débloqué';
+        setCashbackResult({
+          title: 'Code partenaire débloqué',
+          text: 'Le cashback fonctionne : le code s’affiche et le site partenaire peut s’ouvrir immédiatement.',
+          code: code || 'WELCOME15',
+          link
+        });
+      }
 
       estimateRank();
       refreshScoreboard();
@@ -415,11 +444,21 @@ document.addEventListener('DOMContentLoaded', () => {
       button.textContent = 'Activé';
       updateWallet(action + '.');
       updateFeedback(`Récompense activée : ${action}. Les points ont été débités du portefeuille.`);
+      flashCashbackBox();
 
-      if (link && (reward === 'cinema' || reward === 'nike')) {
+      if (link && (reward === 'cinema' || reward === 'nike' || reward === 'welcome')) {
         window.open(link, '_blank', 'noopener');
       }
-    });
+    };
+
+  redeemButtons.forEach((button) => {
+    button.addEventListener('click', () => handleRedeem(button));
+  });
+
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('.redeem-btn');
+    if (!button) return;
+    if (![...redeemButtons].includes(button)) return;
   });
 
   copyCodeBtn?.addEventListener('click', async () => {
@@ -435,6 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       updateFeedback(`Code ${code} copié.`);
       updateWallet(`Code ${code} copié dans le presse-papiers.`);
+      flashCashbackBox();
     } catch (error) {
       updateFeedback(`Code à copier manuellement : ${code}.`);
     }

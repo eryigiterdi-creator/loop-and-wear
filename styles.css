@@ -203,3 +203,13 @@ button{font:inherit;cursor:pointer}
 .hidden{
   display:none !important;
 }
+
+
+.about-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}
+.about-card{background:#fff;border:1px solid rgba(40,90,60,.12);border-radius:24px;padding:28px;box-shadow:0 12px 30px rgba(24,39,31,.06);}
+.about-card h3{margin:0 0 12px;font-size:1.2rem;}
+.about-card p{margin:0;color:#4f5f57;line-height:1.7;}
+.alt-section{background:linear-gradient(180deg,rgba(240,248,242,.8),rgba(255,255,255,.95));}
+.cashback-result.flash{animation:flashResult .7s ease;}
+@keyframes flashResult{0%{transform:scale(.98);box-shadow:0 0 0 rgba(0,0,0,0);}40%{transform:scale(1.01);box-shadow:0 18px 38px rgba(36,93,61,.16);}100%{transform:scale(1);box-shadow:0 12px 30px rgba(24,39,31,.06);}}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr;}}

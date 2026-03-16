@@ -24,9 +24,10 @@
         <span class="brand-city">Strasbourg</span>
       </a>
 
-      <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+      <button type="button" class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
 
       <nav class="nav-links">
+        <a href="#about">Qui sommes-nous</a>
         <a href="#concept">Concept</a>
         <a href="#impact">Impact</a>
         <a href="#demandes">Demandes</a>
@@ -99,6 +100,32 @@
             Aucune action en cours. Crée un bon de dépôt pour démarrer le parcours.
           </div>
         </aside>
+      </div>
+    </section>
+
+
+
+    <section class="section alt-section" id="about">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="eyebrow">Qui sommes-nous</span>
+          <h2>Notre histoire, notre objectif et notre vision</h2>
+          <p>Loop &amp; Wear est né d’une idée simple : rendre la collecte textile plus utile, plus traçable et plus motivante à Strasbourg.</p>
+        </div>
+        <div class="about-grid">
+          <article class="about-card">
+            <h3>Notre histoire</h3>
+            <p>Le projet est parti d’un constat : beaucoup de vêtements sont déposés sans savoir s’ils correspondent à un besoin réel. Nous avons imaginé une application capable de connecter les particuliers, les bennes de collecte et les acteurs du textile circulaire.</p>
+          </article>
+          <article class="about-card">
+            <h3>Notre objectif</h3>
+            <p>Faire en sorte que chaque dépôt réponde à une demande concrète d’entreprise, d’atelier ou d’acteur solidaire, avec un suivi clair du bon de dépôt jusqu’à la validation finale.</p>
+          </article>
+          <article class="about-card">
+            <h3>Notre promesse</h3>
+            <p>Donner une vraie valeur au geste de tri : un dépôt tracé, un impact écologique mesurable, un cashback réellement utilisable et une expérience plus engageante grâce aux niveaux, concours et récompenses.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -190,8 +217,8 @@
             </ul>
             <div class="campaign-stats"><span>Objectif : 120 pièces</span><span>Récompense : 120 pts</span></div>
             <div class="campaign-actions">
-              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Denim en bon état" data-category="Réemploi" data-points="120" data-location="Vétis · Esplanade">Créer un bon de dépôt</button>
-              <button class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l’usage des points</button>
+              <button type="button" class="btn btn-primary small-btn reserve-btn" data-campaign="Denim en bon état" data-category="Réemploi" data-points="120" data-location="Vétis · Esplanade">Créer un bon de dépôt</button>
+              <button type="button" class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l’usage des points</button>
             </div>
           </article>
 
@@ -206,8 +233,8 @@
             </ul>
             <div class="campaign-stats"><span>Objectif : 80 pièces</span><span>Récompense : 95 pts</span></div>
             <div class="campaign-actions">
-              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Sweats unis et hoodies" data-category="Upcycling" data-points="95" data-location="Rivetoile · Point relais">Créer un bon de dépôt</button>
-              <button class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l’usage des points</button>
+              <button type="button" class="btn btn-primary small-btn reserve-btn" data-campaign="Sweats unis et hoodies" data-category="Upcycling" data-points="95" data-location="Rivetoile · Point relais">Créer un bon de dépôt</button>
+              <button type="button" class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l’usage des points</button>
             </div>
           </article>
 
@@ -222,8 +249,8 @@
             </ul>
             <div class="campaign-stats"><span>Objectif : 60 pièces</span><span>Récompense : 140 pts</span></div>
             <div class="campaign-actions">
-              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Manteaux et vêtements chauds" data-category="Solidaire" data-points="140" data-location="Neudorf · Borne textile">Créer un bon de dépôt</button>
-              <button class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l’usage des points</button>
+              <button type="button" class="btn btn-primary small-btn reserve-btn" data-campaign="Manteaux et vêtements chauds" data-category="Solidaire" data-points="140" data-location="Neudorf · Borne textile">Créer un bon de dépôt</button>
+              <button type="button" class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l’usage des points</button>
             </div>
           </article>
 
@@ -238,8 +265,8 @@
             </ul>
             <div class="campaign-stats"><span>Objectif : 200 kg</span><span>Récompense : 70 pts</span></div>
             <div class="campaign-actions">
-              <button class="btn btn-primary small-btn reserve-btn" data-campaign="Textiles abîmés tri matière" data-category="Matière" data-points="70" data-location="Gare centrale · Borne textile">Créer un bon de dépôt</button>
-              <button class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l’usage des points</button>
+              <button type="button" class="btn btn-primary small-btn reserve-btn" data-campaign="Textiles abîmés tri matière" data-category="Matière" data-points="70" data-location="Gare centrale · Borne textile">Créer un bon de dépôt</button>
+              <button type="button" class="btn btn-secondary small-btn usage-btn" data-scroll="#cashback">Voir l’usage des points</button>
             </div>
           </article>
         </div>
@@ -282,8 +309,8 @@
             </div>
             <div class="qr-wrap"><canvas id="qr-canvas"></canvas></div>
             <div class="bon-actions">
-              <button class="btn btn-primary" id="scan-btn">Scanner à la collecte</button>
-              <button class="btn btn-secondary" id="validate-btn">Valider le dépôt</button>
+              <button type="button" class="btn btn-primary" id="scan-btn">Scanner à la collecte</button>
+              <button type="button" class="btn btn-secondary" id="validate-btn">Valider le dépôt</button>
             </div>
           </div>
         </div>
@@ -318,12 +345,12 @@
           </div>
         </div>
         <div class="reward-grid">
-          <article class="reward-card"><span class="reward-tag">Culture</span><h3>Place de cinéma</h3><p>1 ticket cinéma à activer avec un code promo ou en ouvrant le site partenaire.</p><strong>500 pts</strong><button class="btn btn-primary redeem-btn" data-cost="500" data-reward="cinema" data-code="LOOPCINE26" data-link="https://www.pathe.fr/">Utiliser le cashback</button></article>
-          <article class="reward-card"><span class="reward-tag">Mode</span><h3>5 € de réduction Nike</h3><p>Code de réduction affiché dans l’app + ouverture du site officiel Nike France.</p><strong>900 pts</strong><button class="btn btn-primary redeem-btn" data-cost="900" data-reward="nike" data-code="RECYCL22" data-link="https://www.nike.com/fr/">Utiliser le cashback</button></article>
-          <article class="reward-card"><span class="reward-tag">Local</span><h3>Bon 10 € friperie partenaire</h3><p>Un code partenaire est généré et reste disponible dans l’espace avantages.</p><strong>1100 pts</strong><button class="btn btn-primary redeem-btn" data-cost="1100" data-reward="friperie" data-code="FRIP-LOOP10">Utiliser le cashback</button></article>
-          <article class="reward-card"><span class="reward-tag">Atelier</span><h3>Atelier upcycling premium</h3><p>Réservation prioritaire avec code d’accès transmis immédiatement après activation.</p><strong>700 pts</strong><button class="btn btn-primary redeem-btn" data-cost="700" data-reward="atelier" data-code="UPCYCLE26">Utiliser le cashback</button></article>
-          <article class="reward-card"><span class="reward-tag">Abonnement</span><h3>Loop &amp; Wear Plus</h3><p>1 mois d’abonnement avec bonus points, offres exclusives et file rapide.</p><strong>650 pts</strong><button class="btn btn-primary redeem-btn" data-cost="650" data-reward="subscription">Activer</button></article>
-          <article class="reward-card"><span class="reward-tag">Concours</span><h3>Booster concours</h3><p>Ajoute immédiatement des points au classement mensuel.</p><strong>300 pts</strong><button class="btn btn-primary redeem-btn" data-cost="300" data-reward="contest">Booster</button></article>
+          <article class="reward-card"><span class="reward-tag">Culture</span><h3>Place de cinéma</h3><p>1 ticket cinéma à activer avec un code promo ou en ouvrant le site partenaire.</p><strong>500 pts</strong><button type="button" class="btn btn-primary redeem-btn" data-cost="500" data-reward="cinema" data-code="LOOPCINE26" data-link="https://www.pathe.fr/">Utiliser le cashback</button></article>
+          <article class="reward-card"><span class="reward-tag">Mode</span><h3>5 € de réduction Nike</h3><p>Code de réduction affiché dans l’app + ouverture du site officiel Nike France.</p><strong>900 pts</strong><button type="button" class="btn btn-primary redeem-btn" data-cost="900" data-reward="nike" data-code="RECYCL22" data-link="https://www.nike.com/fr/">Utiliser le cashback</button></article>
+          <article class="reward-card"><span class="reward-tag">Local</span><h3>Bon 10 € friperie partenaire</h3><p>Un code partenaire est généré et reste disponible dans l’espace avantages.</p><strong>1100 pts</strong><button type="button" class="btn btn-primary redeem-btn" data-cost="1100" data-reward="friperie" data-code="FRIP-LOOP10">Utiliser le cashback</button></article>
+          <article class="reward-card"><span class="reward-tag">Atelier</span><h3>Atelier upcycling premium</h3><p>Réservation prioritaire avec code d’accès transmis immédiatement après activation.</p><strong>700 pts</strong><button type="button" class="btn btn-primary redeem-btn" data-cost="700" data-reward="atelier" data-code="UPCYCLE26">Utiliser le cashback</button></article>
+          <article class="reward-card"><span class="reward-tag">Abonnement</span><h3>Loop &amp; Wear Plus</h3><p>1 mois d’abonnement avec bonus points, offres exclusives et file rapide.</p><strong>650 pts</strong><button type="button" class="btn btn-primary redeem-btn" data-cost="650" data-reward="subscription">Activer</button></article>
+          <article class="reward-card"><span class="reward-tag">Concours</span><h3>Booster concours</h3><p>Ajoute immédiatement des points au classement mensuel.</p><strong>300 pts</strong><button type="button" class="btn btn-primary redeem-btn" data-cost="300" data-reward="contest">Booster</button></article>
         </div>
 
         <div class="cashback-result" id="cashback-result">
@@ -331,10 +358,10 @@
             <span class="reward-tag">Avantage débloqué</span>
             <strong id="cashback-result-title">Aucun avantage activé pour le moment</strong>
           </div>
-          <p id="cashback-result-text">Quand l’utilisateur clique sur “Utiliser le cashback”, l’application peut soit afficher un code promo concret, soit ouvrir le site du partenaire dans un nouvel onglet.</p>
+          <p id="cashback-result-text">Quand l’utilisateur clique sur “Utiliser le cashback”, l’application affiche un code concret, met à jour le solde et peut ouvrir le site du partenaire dans un nouvel onglet.</p>
           <div class="cashback-result-code" id="cashback-result-code">—</div>
           <div class="cashback-result-actions">
-            <button class="btn btn-secondary" id="copy-code-btn" type="button">Copier le code</button>
+            <button type="button" class="btn btn-secondary" id="copy-code-btn" type="button">Copier le code</button>
             <a class="btn btn-primary hidden" id="partner-link-btn" href="#" target="_blank" rel="noopener">Ouvrir le site partenaire</a>
           </div>
         </div>
@@ -366,7 +393,7 @@
             <h3>Loop &amp; Wear Plus</h3>
             <p class="plan-price">4,99 € / mois</p>
             <p>Idéal pour les utilisateurs réguliers qui veulent maximiser leurs dépôts, leurs points et leurs récompenses.</p>
-            <button class="btn btn-primary" id="subscribe-plan-btn">Activer mon abonnement</button>
+            <button type="button" class="btn btn-primary" id="subscribe-plan-btn">Activer mon abonnement</button>
           </article>
           <article class="subscription-plan">
             <h3>Activation avec points</h3>
@@ -470,7 +497,7 @@
               <li>Votre bon actif expire dans 48 h.</li>
               <li>Bonus concours disponible sur la mission campus.</li>
             </ul>
-            <button class="btn btn-secondary" id="notif-btn">Recevoir une nouvelle alerte</button>
+            <button type="button" class="btn btn-secondary" id="notif-btn">Recevoir une nouvelle alerte</button>
           </article>
 
           <article class="profile-card">
