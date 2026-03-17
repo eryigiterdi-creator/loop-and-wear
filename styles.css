@@ -80,3 +80,36 @@ h3{margin:0 0 10px;font-size:1.25rem}
 .panel{backdrop-filter:blur(3px)}
 .nav-wrap{position:relative}
 @media (max-width:1024px){.nav a{width:100%}}
+
+
+/* V16 enhancements */
+body{background:linear-gradient(180deg,#f8fbf7 0%,#eef5ef 35%,#f8fbf7 100%);}
+body::before{content:"";position:fixed;inset:0;background-image:url('assets/nature-loop.svg');background-repeat:no-repeat;background-size:680px auto;background-position:right -80px top 90px;opacity:.06;pointer-events:none;z-index:-2}
+.site-header{backdrop-filter:blur(12px);background:rgba(248,251,247,.92)!important;border-bottom:1px solid rgba(38,79,52,.08);}
+.nav{display:flex;flex-wrap:wrap;gap:10px 10px;justify-content:flex-end;}
+.nav a{display:inline-flex;align-items:center;justify-content:center;padding:11px 14px;border:1px solid #d8e4da;border-radius:16px;background:#ffffff;color:#35523f;font-weight:700;line-height:1.1;box-shadow:0 6px 18px rgba(24,55,34,.04);transition:all .18s ease;}
+.nav a:hover{transform:translateY(-1px);background:#eef7ef;border-color:#b8d0bd;color:#21422f;}
+.brand{padding:8px 0;}
+.hero{overflow:hidden;}
+.hero::after{content:"";position:absolute;right:6%;top:22%;width:220px;height:220px;background:radial-gradient(circle,#dceedd 0 28%,transparent 29%),radial-gradient(circle at 70% 70%,#f6e8ea 0 16%,transparent 17%);opacity:.7;pointer-events:none}
+.hero-grid{align-items:start;}
+.hero h1{max-width:720px}
+.panel{border:1px solid rgba(46,89,63,.08);box-shadow:0 16px 34px rgba(31,63,43,.06)}
+.section-heading.center p{max-width:760px;margin-left:auto;margin-right:auto}
+.eyebrow{box-shadow:0 8px 16px rgba(46,89,63,.08)}
+.eco-showcase{position:relative;}
+.visual-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:20px;}
+.visual-card{display:flex;flex-direction:column;gap:16px;min-height:100%;background:linear-gradient(180deg,#ffffff 0%,#f7fbf7 100%)}
+.visual-card img{width:100%;height:210px;object-fit:cover;border-radius:20px;background:#edf5ee;border:1px solid #dbe7dd}
+.visual-card-large img{height:260px}
+.mini-badge-row{display:flex;flex-wrap:wrap;gap:10px}
+.mini-badge{display:inline-flex;padding:8px 12px;border-radius:999px;background:#edf6ee;color:#2f6b44;font-weight:700;font-size:.92rem;border:1px solid #d7e9d9}
+.review-item,.quote-card,.faq-item,.campaign-card,.metric-card,.info-card,.opinion-panel,.contact-form-panel{background:linear-gradient(180deg,#ffffff 0%,#fbfdfb 100%)}
+.site-footer{background:#20362a;color:#eef6ef;padding:34px 0;margin-top:10px}
+.site-footer p,.site-footer a{color:#d8e7da}
+.footer-links{display:flex;gap:14px;flex-wrap:wrap}
+.footer-links a{padding:8px 12px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.05)}
+.location-list li,.contact-list li{border:1px solid #e2ebe3;border-radius:14px;padding:14px 16px;background:#fff}
+#review-form input,#review-form textarea,.partner-form input,.partner-form textarea{background:#fff;border:1px solid #d7e6d9;border-radius:14px}
+@media (max-width:1100px){.visual-grid{grid-template-columns:1fr 1fr}.visual-card-large{grid-column:1/-1}}
+@media (max-width:840px){body::before{background-size:420px auto;background-position:right -120px top 100px}.nav{justify-content:flex-start}.nav a{font-size:.95rem;padding:10px 12px}.visual-grid{grid-template-columns:1fr}}

@@ -338,3 +338,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   renderStats();
 });
+
+
+// V16 small UX helpers
+document.addEventListener('DOMContentLoaded', () => {
+  const reviewBtn = document.getElementById('review-btn');
+  const reviewList = document.getElementById('review-list');
+  const reviewName = document.getElementById('review-name');
+  const reviewRating = document.getElementById('review-rating');
+  const reviewMessage = document.getElementById('review-message');
+  const reviewFeedback = document.getElementById('review-feedback');
+  const contactBtn = document.getElementById('contact-btn');
+  const contactFeedback = document.getElementById('contact-feedback');
+
+  if (reviewBtn && reviewList) {
+    reviewBtn.addEventListener('click', () => {
+      const name = (reviewName?.value || '').trim() || 'Utilisateur';
+      const rating = (reviewRating?.value || '').trim() || '5/5';
+      const message = (reviewMessage?.value || '').trim();
+      if (!message) {
+        if (reviewFeedback) reviewFeedback.textContent = 'Ajoute un message pour publier ton avis.';
+        return;
+      }
+      const item = document.createElement('article');
+      item.className = 'review-item';
+      item.innerHTML = `<div class="review-top"><strong>${name}</strong><span>${rating}</span></div><p>“${message}”</p>`;
+      reviewList.prepend(item);
+      if (reviewFeedback) reviewFeedback.textContent = 'Merci, votre avis a bien été ajouté à la démonstration.';
+      if (reviewName) reviewName.value = '';
+      if (reviewRating) reviewRating.value = '';
+      if (reviewMessage) reviewMessage.value = '';
+    });
+  }
+
+  if (contactBtn && contactFeedback) {
+    contactBtn.addEventListener('click', () => {
+      contactFeedback.textContent = 'Message envoyé dans la maquette. Un retour vous sera proposé sous 24 à 48 h.';
+    });
+  }
+});
